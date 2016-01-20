@@ -10,7 +10,7 @@ class Server(QPushButton):
 	def __init__(self, parent=None):
 		super(Server, self).__init__( "&Close Server", parent)
 		self.conncArray = []
-		self.currentsock = 0
+		sock = 0
 		self.setWindowFlags(Qt.WindowStaysOnTopHint)
 
 		self.connect(self, SIGNAL("clicked()"), self.close)
@@ -23,7 +23,7 @@ class Server(QPushButton):
 		self.tcpServer = QTcpServer(self)
 
 		self.tcpServer.setMaxPendingConnections(MAX_CONNECTIONS)
-		#self.tcpServer.setProxy(QNetworkProxy:NoProxy)
+		#self.tcpServer.setProxy(QNetworkProxy::NoProxy)
 		self.tcpServer.listen(QHostAddress(addr), port)
 
 		self.connect(self.tcpServer, SIGNAL("newConnection()"), self.createNewConn)
@@ -34,36 +34,27 @@ class Server(QPushButton):
 			connSock = self.tcpServer.nextPendingConnection()
 		else:
 			return 
-		connSock.nextBlockSize = 0	
-		self.currentsock = connSock
-		print("1231")
-		self.connect(self.currentsock, SIGNAL("readyRead()"), self.recv)
-		self.connect(self.currentsock, SIGNAL("disconnected()"), self.disconnect)
+
+		self.connect(connSock, SIGNAL("readyRead()"), self.recv)
+		self.connect(connSock, SIGNAL("disconnected()"), self.disconnect)
 	
 	def recv(self):
-		print("in recv")
-		if self.currentsock.bytesAvailable() > 0:
-			rstream = QDataStream(self.currentsock)
+		sock = self.sender()
+
+		if sock.bytesAvailable() > 4:
+			rstream = QDataStream(sock)
 			rstream.setVersion(QDataStream.Qt_4_2)
-			if self.currentsock.nextBlockSize == 0:
-				if self.currentsock.bytesAvailable < 4:
-					return
-				self.currentsock.nextBlockSize = rstream.readUInt32()
 
-			if self.currentsock.bytesAvailable() < self.currentsock.nextBlockSize:
-				return
-
-			msg = rstream.readQString()
-			print("%s",msg)
-			self.currentsock.nextBlockSize = 0
-			reply = QByteArray()
+			msg 	= rstream.readQString()
+			reply 	= QByteArray()
 			wstream = QDataStream(reply, QIODevice.WriteOnly)
+
 			wstream.setVersion(QDataStream.Qt_4_2)
 			wstream.writeUInt32(0)
 			wstream.writeQString(msg)
 			wstream.device().seek(0)
 			wstream.writeUInt32(reply.size() - 4)
-			self.currentsock.write(reply)
+			sock.write(reply)
 
 	def disconnect(self):
 		print("disconnect")
