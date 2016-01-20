@@ -5,29 +5,25 @@ from PyQt4.QtNetwork import *
 
 MAX_CONNECTIONS = 60
 
-class Server(QPushButton):
+class Server(QDialog):
 
 	def __init__(self, parent=None):
-		super(Server, self).__init__( "&Close Server", parent)
+		super(Server, self).__init__(parent)
 		self.conncArray = []
-		sock = 0
-		self.setWindowFlags(Qt.WindowStaysOnTopHint)
-
-		self.connect(self, SIGNAL("clicked()"), self.close)
-		font = self.font()
-		font.setPointSize(24)
-		self.setFont(font)
+		self.txtBrowser = QTextBrowser()
+		layout = QVBoxLayout()
+		layout.addWidget(self.txtBrowser)
+		self.setLayout(layout)
 		self.setWindowTitle("Server")
 
 	def init(self, addr,port):
 		self.tcpServer = QTcpServer(self)
 
 		self.tcpServer.setMaxPendingConnections(MAX_CONNECTIONS)
-		#self.tcpServer.setProxy(QNetworkProxy::NoProxy)
+
 		self.tcpServer.listen(QHostAddress(addr), port)
 
-		self.connect(self.tcpServer, SIGNAL("newConnection()"), self.createNewConn)
-		self.connect(self.tcpServer, SIGNAL("acceptError()"), self.acceptErr)
+		self.tcpServer.newConnection.connect(self.createNewConn)
 
 	def createNewConn(self):
 		if self.tcpServer.hasPendingConnections():
@@ -35,8 +31,8 @@ class Server(QPushButton):
 		else:
 			return 
 
-		self.connect(connSock, SIGNAL("readyRead()"), self.recv)
-		self.connect(connSock, SIGNAL("disconnected()"), self.disconnect)
+		connSock.readyRead.connect(self.recv)
+		connSock.disconnected.connect(self.disconnect)
 	
 	def recv(self):
 		sock = self.sender()
@@ -46,6 +42,9 @@ class Server(QPushButton):
 			rstream.setVersion(QDataStream.Qt_4_2)
 
 			msg 	= rstream.readQString()
+
+			print("%s" % msg);
+			self.freshTxtBrowser(msg)
 			reply 	= QByteArray()
 			wstream = QDataStream(reply, QIODevice.WriteOnly)
 
@@ -65,6 +64,8 @@ class Server(QPushButton):
 	def acceptErr(self):
 		pass
 
+	def freshTxtBrowser(self,txt):
+		self.txtBrowser.append(txt)
 
 app = QApplication(sys.argv)
 form = Server()
