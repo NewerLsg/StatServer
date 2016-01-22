@@ -10,8 +10,8 @@ class  TcpServer(QTcpServer):
 		super( TcpServer, self).__init__(parent)
 		self.listen(QHostAddress(addr), port)
 		self.setMaxPendingConnections(MAX_CONNECTIONS)
-		self.conns = []
+		self.conns = [] 			#需要保留这些sock，否则会被销毁
 
 	def incomingConnection(self, descriptor):
 		connSock = ClientSock(descriptor)
-		self.conns.append(connSock);
+		self.conns.append(connSock)

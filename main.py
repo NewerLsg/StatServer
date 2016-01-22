@@ -24,6 +24,8 @@ class Main(QDialog):
 
 		self.tcpServer = TcpServer(addr, port)
 
+		print("start server.")
+
 app = QApplication(sys.argv)
 main = Main()
 

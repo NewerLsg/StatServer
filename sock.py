@@ -10,14 +10,29 @@ class ClientSock(QTcpSocket):
 		self.setSocketDescriptor(descriptor)
 		self.readyRead.connect(self.recv)
 		self.disconnected.connect(self.disconnect)
+		self.error.connect(self.sockErr)
+
 
 	def recv(self):
-		if self.bytesAvailable() > 0:
-			stream = QDataStream(self)
-			stream.setVersion(QDataStream.Qt_4_2)
-			msg = stream.readQString()
-			resp = praseMsg(msg)
-			self.write(resp)	
+		while not self.canReadLine():
+				continue
+		"""
+		rawMsg = self.readLine(128)   #QBytesArray
+		data = QByteArray.fromRawData(rawMsg)
+		stream = QDataStream(data, QIODevice.ReadOnly)
+		msg = stream.readQString()
+		print("%s" % msg)
 
+		"""""
+		stream = QDataStream(self)
+		stream.setVersion(QDataStream.Qt_4_2)
+		rawMsg = stream.readQString()
+		print("%s" % rawMsg)
+		parseMsg()
+	
+
+	def sockErr(self):
+		print("Error:%s" % format(self.errorString()))
+		
 	def disconnect(self):
-		print("disconnected")
+		self.close()
