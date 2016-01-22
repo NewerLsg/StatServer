@@ -5,7 +5,7 @@ from PyQt4.QtNetwork import *
 from tcpserver import *
 
 from globalVars import *
-from door import *
+from conmmunicationObjs import *
 
 class Main(QDialog):
 
