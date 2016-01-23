@@ -5,34 +5,40 @@ from PyQt4.QtNetwork import *
 from tcpserver import *
 
 from globalVars import *
-from conmmunicationObjs import *
+from communicationObjs import *
 
-class Main(QDialog):
+from ui.mainWindow import *
+
+class Main(QMainWindow):
 
 	def __init__(self, parent=None):
 		super(Main, self).__init__(parent)
-		self.txtBrowser = QTextBrowser()
-		layout = QVBoxLayout()
-		layout.addWidget(self.txtBrowser)
-		self.setLayout(layout)
-		self.setWindowTitle("Main")
+		self.ui = Ui_MainWindow()
+		self.ui.setupUi(self)
+		self.ui.lineEdit.setText("9999")
+		self.ui.pushButton.clicked.connect(self.startServer)
+		self.ui.pushButton_2.clicked.connect(self.stopServer)
 
-	def startServer(self, addr, port):
+	def startServer(self):
+		port = int(self.ui.lineEdit.text())
+
 		for x in range(1,20):
 			newDoor = Door(x)
 			g_doorArray.append(newDoor)
 
-		self.tcpServer = TcpServer(addr, port)
+		self.tcpServer = TcpServer("0.0.0.0", port)	
+		self.ui.pushButton.setEnabled(False)
+		self.ui.lineEdit.setEnabled(False)
+		print("server started")
 
-		print("start server.")
+	def stopServer(self):
+		self.tcpServer.close()
+		self.ui.pushButton.setEnabled(True)
+		self.ui.lineEdit.setEnabled(True)
+		print("server stoped")
 
 app = QApplication(sys.argv)
 main = Main()
-
-main.startServer("0.0.0.0",9999)
-
 main.show()
-
-main.move(0, 0)
 
 app.exec_()

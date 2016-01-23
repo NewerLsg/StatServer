@@ -54,29 +54,54 @@ class Form(QDialog):
         self.socket.connectToHost("localhost", PORT)
 
     def issueRequest(self):
-        self.request = QByteArray()
-        stream = QDataStream(self.request, QIODevice.WriteOnly)
-        stream.setVersion(QDataStream.Qt_4_2)
-        stream.writeQString(self.lineedit.text() + "\n")
-        self.socket.write(self.request)
-        self.nextBlockSize = 0
-        self.request = None
+        self.socket.write("TS00HD\n")
+        self.socket.write("TS00LD\n")
+        self.socket.write("TS00HD\n")
+        self.socket.write("TS0102ABHD\n")
+        self.socket.write("TS0103CDELD\n")
+
+        #目标物被设计
+        self.socket.write("MSA\n")
+        self.socket.write("MSC\n")
+        self.socket.write("MSD\n")
+
+        #门请求权限
+        self.socket.write("DS0001\n")
+        self.socket.write("DS0002\n")
+        self.socket.write("DS0003\n")
+
+        #HD队1号开门,应该是允许
+        self.socket.write("DS01A01\n")
+
+        #LD队1号开门,应该是允许
+        self.socket.write("DS01C01\n")
+
+        #HD队2号开门,应该是允许
+        self.socket.write("DS01A02\n")
+
+
+        self.socket.write("DS0001\n")
+        self.socket.write("DS0002\n")
+        self.socket.write("DS0003\n")
+
         self.lineedit.setText("")
 
     def readFromServer(self):
-        stream = QDataStream(self.socket)
-        stream.setVersion(QDataStream.Qt_4_2)
-
-        while True:
-            if self.nextBlockSize == 0:
-                if self.socket.bytesAvailable() < SIZEOF_UINT32:
-                    break
-                self.nextBlockSize = stream.readUInt32()
-            if self.socket.bytesAvailable() < self.nextBlockSize:
-                break
+        while self.socket.canReadLine():
+            rawMsg = self.socket.readLine(128)         #QBytesArray
+            print("raw:%s,data:%s" % (rawMsg, rawMsg.decode()))
+            msg = rawMsg.decode()
+            self.updateUi(msg[:-1])
+            continue
+            
+        """"
+        while self.socket.bytesAvailable():
+            stream = QDataStream(self.socket)
+            stream.setVersion(QDataStream.Qt_4_2)
             textFromServer = stream.readQString()
+            print("recv:%s" % textFromServer)
             self.updateUi(textFromServer)
-            self.nextBlockSize = 0
+            """
 
     def serverHasStopped(self):
         self.socket.close()

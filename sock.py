@@ -14,25 +14,31 @@ class ClientSock(QTcpSocket):
 
 
 	def recv(self):
-		while not self.canReadLine():
-				continue
+		while self.canReadLine():
+			rawMsg = self.readLine(128)   		#QBytesArray
+			print("raw:%s,data:%s" % (rawMsg, rawMsg.decode()))
+			resp = parseMsg(rawMsg.decode())
+
+			if resp is not None:
+				print("resp:%s" % resp)
+				writen = self.write(resp)
+				print("%d" % writen)
+			continue
 		
-		""""
-		#rawMsg = self.readLine(128)   		#QBytesArray
+		"""
+		rawMsg = self.readLine(128)   		#QBytesArray
 		#print("%s" % bytes.decode(rawMsg)) #编码这里是个坑,不用这种
 		data = QByteArray.fromRawData(rawMsg)
 		stream = QDataStream(data, QIODevice.ReadOnly)
 		msg = stream.readQString()
-		print("%s" % msg)
+		resp = parseMsg(msg)
 		"""""
-
+		""""
 		stream = QDataStream(self)
 		stream.setVersion(QDataStream.Qt_4_2)
 		rawMsg = stream.readQString()
 		resp = parseMsg(rawMsg)
-		
-		if resp is not None:
-			print("%s" % resp)
+		"""""
 
 	def sockErr(self):
 		print("Error:%s" % format(self.errorString()))
