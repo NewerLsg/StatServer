@@ -9,6 +9,7 @@ from globalVars import *
 from communicationObjs import *
 
 from ui.mainWindow import *
+from config import *
 
 class Main(QMainWindow):
 
@@ -18,6 +19,8 @@ class Main(QMainWindow):
 		self.ui.setupUi(self)
 		self.ui.StartBtn.clicked.connect(self.startServer)
 		self.ui.StopBtn.clicked.connect(self.stopServer)
+		self.ui.action.triggered.connect(self.showConfig)
+
 		#self.WorkThread = None
 
 	def startServer(self):
@@ -83,6 +86,11 @@ class Main(QMainWindow):
 
 		del(team)
 		del(mem)
+
+	def showConfig(self):
+		self.configWindow =  ConfigDialog()
+		self.configWindow.setWindowModality(Qt.ApplicationModal)
+		self.configWindow.show()
 
 app = QApplication(sys.argv)
 main = Main()
