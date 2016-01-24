@@ -18,6 +18,7 @@ class Main(QMainWindow):
 		self.ui.lineEdit.setText("9999")
 		self.ui.pushButton.clicked.connect(self.startServer)
 		self.ui.pushButton_2.clicked.connect(self.stopServer)
+		#self.WorkThread = None
 
 	def startServer(self):
 		port = int(self.ui.lineEdit.text())
@@ -26,16 +27,33 @@ class Main(QMainWindow):
 			newDoor = Door(x)
 			g_doorArray.append(newDoor)
 
-		self.tcpServer = TcpServer("0.0.0.0", port)	
+		"""
+		self.WorkThread = WorkThread(port, self)
+		self.WorkThread.start()
+		"""
+		
+		self.tcpServer = TcpServer("0.0.0.0", port)
+		self.connect(self.tcpServer,SIGNAL("updateRank()"),self.updateRank)
+
 		self.ui.pushButton.setEnabled(False)
 		self.ui.lineEdit.setEnabled(False)
 		print("server started")
 
 	def stopServer(self):
+		#self.WorkThread.quit()
 		self.tcpServer.close()
 		self.ui.pushButton.setEnabled(True)
 		self.ui.lineEdit.setEnabled(True)
 		print("server stoped")
+
+	def updateRank(self):
+		row = len(g_TeamArray)
+		self.ui.tableWidget.setRowCount(row)
+		i = int(0)
+		for t in g_TeamArray:
+			self.ui.tableWidget.setItem(i,0,QTableWidgetItem(str(t.name)))
+			self.ui.tableWidget.setItem(i,1,QTableWidgetItem(str(t.totalScore)))	
+			i += 1
 
 app = QApplication(sys.argv)
 main = Main()

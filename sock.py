@@ -5,7 +5,8 @@ from protocol import *
 
 class ClientSock(QTcpSocket):
 	"""docstring for ClientSock"""
-	def __init__(self, descriptor, parent=None):
+	def __init__(self, descriptor,parent=None):
+		#def __init__(self, descriptor, tcpserver, parent=None):
 		super(ClientSock, self).__init__(parent)		
 		self.setSocketDescriptor(descriptor)
 		self.readyRead.connect(self.recv)
@@ -17,28 +18,20 @@ class ClientSock(QTcpSocket):
 		while self.canReadLine():
 			rawMsg = self.readLine(128)   		#QBytesArray
 			print("raw:%s,data:%s" % (rawMsg, rawMsg.decode()))
-			resp = parseMsg(rawMsg.decode())
 
-			if resp is not None:
-				print("resp:%s" % resp)
-				writen = self.write(resp)
+			respv,updateRank = parseMsg(rawMsg.decode())
+
+			print(" %s , %s" %(str(respv), str(updateRank)))
+			if respv is not None:
+				print("resp:%s" % str(respv))
+				writen = self.write(str(respv))
 				print("%d" % writen)
+
+			if bool(updateRank) is True:
+				self.emit(SIGNAL("updateRank()"))
+				#self.tcpserver.updateRank()
+
 			continue
-		
-		"""
-		rawMsg = self.readLine(128)   		#QBytesArray
-		#print("%s" % bytes.decode(rawMsg)) #编码这里是个坑,不用这种
-		data = QByteArray.fromRawData(rawMsg)
-		stream = QDataStream(data, QIODevice.ReadOnly)
-		msg = stream.readQString()
-		resp = parseMsg(msg)
-		"""""
-		""""
-		stream = QDataStream(self)
-		stream.setVersion(QDataStream.Qt_4_2)
-		rawMsg = stream.readQString()
-		resp = parseMsg(rawMsg)
-		"""""
 
 	def sockErr(self):
 		print("Error:%s" % format(self.errorString()))

@@ -4,14 +4,42 @@ from sock import *
 
 MAX_CONNECTIONS = 60
 
+
+class WorkThread(QThread):
+	def __init__(self, descriptor):
+		super(WorkThread, self).__init__()
+		self.tcpServer  =  None
+		self.descriptor = descriptor
+		self.sock 		= None
+	def run(self):
+		sock = ClientSock(self.descriptor, self);
+		self.sock = sock
+		self.connect(self.sock, SIGNAL("updateRank()"),self.updateRank)	
+		self.exec()
+
+	def updateRank(self):
+		self.emit(SIGNAL("updateRank()"))
+
+	def quit(self):
+		print("thread quit")
+		self.tcpServer.close()
+
+
 class  TcpServer(QTcpServer):
 	"""docstring for  TcpServer"""
 	def __init__(self,addr, port, parent=None):
 		super( TcpServer, self).__init__(parent)
+		self.updateSignal = pyqtSignal()
 		self.listen(QHostAddress(addr), port)
 		self.setMaxPendingConnections(MAX_CONNECTIONS)
-		self.conns = [] 			#ĞèÒª±£ÁôÕâĞ©sock£¬·ñÔò»á±»Ïú»Ù
+		self.conns = [] 			#ä¸èƒ½åˆ é™¤ï¼Œå¦åˆ™å¯¹è±¡ä¼šè¢«é”€æ¯
 
 	def incomingConnection(self, descriptor):
-		connSock = ClientSock(descriptor)
-		self.conns.append(connSock)
+		print("new connSock")
+		work = WorkThread(descriptor)
+		self.connect(work, SIGNAL("updateRank()"), self.updateRank)
+		self.conns.append(work)
+		work.start()
+	
+	def updateRank(self):
+		self.emit(SIGNAL("updateRank()"))

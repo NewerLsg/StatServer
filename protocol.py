@@ -36,7 +36,7 @@ def parseMsg(rawMsg):
 	resp = None
 
 	if len(rawMsg) < 2 :
-		return None
+		return None, False
 
 	msgType = rawMsg[0:2]
 	msgContent = rawMsg[2:-1]
@@ -45,22 +45,20 @@ def parseMsg(rawMsg):
 	print("%s" % rawMsg[2:-1])
 
 	if msgType == MEN_TO_SERVER:
-		resp = parseMenMsg(msgContent)
+		return  parseMenMsg(msgContent),False
 
 	elif msgType == TEAM_TO_SERVER:
-		resp = parseTeamMsg(msgContent)
+		return  parseTeamMsg(msgContent),False
 
 	elif msgType == DEST_TO_SERVER:
-		resp = parseDestMsg(msgContent)
-
-	return resp
+		return  parseDestMsg(msgContent)
 
 
 def parseMenMsg(msgContent):
 	print("msg from door")
 
 	if len(msgContent) < 3:
-		return 
+		return None
 
 	subtype = msgContent[0:2]
 	content = msgContent[2:]
@@ -90,7 +88,7 @@ def parseMenMsg(msgContent):
 				return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
 
 			elif  g_doorArray[did - 1].teamIn is not None \
-					and g_doorArray[did - 1].teamIn.totalSocre > 0:
+					and g_doorArray[did - 1].teamIn.totalScore > 0:
 
 				print("score matched")
 
@@ -111,7 +109,7 @@ def parseMenMsg(msgContent):
 		curDoor = g_doorArray[did] #当前请求的门
 
 		if did > g_config['tatolDoors']:
-			return SERVER_TO_MEN + '00' + MSG_END #这个队员不属于任何队伍，亮起0个目标物
+			return ERVER_TO_MEN + '00' + MSG_END #这个队员不属于任何队伍，亮起0个目标物
 
 		for m in g_memArray:
 			if m.id == mid:
@@ -133,13 +131,13 @@ def parseTeamMsg(msgContent):
 	print("subtype:%s, content:%s" %(subtype, content))
 
 	#名字
-	if subtype == TEAM_NAEM_MSG :
+	if subtype == TEAM_NAEM_MSG:
 		for team in g_TeamArray:
 			if team.name == content:
 				return SERVER_TO_TEAM + NAME_UNAVAIL + MSG_END
 
 		#创建新的队伍
-		newTeam  = TeamObj(content)
+		newTeam = TeamObj(content)
 		g_TeamArray.append(newTeam)
 
 		return SERVER_TO_TEAM + NAME_AVAIL + MSG_END
@@ -151,7 +149,7 @@ def parseTeamMsg(msgContent):
 
 		print("num:%d" % (num))
 		if num <= 0:
-			return None
+			return None,
 
 		#队名列表的结束位置
 		#例：02ABHONGDUI -- 02为个数, A、B为ID，HONGDUI为队名
@@ -180,14 +178,15 @@ def parseTeamMsg(msgContent):
 				break
 
 		return None
-				
 
 def parseDestMsg(msgContent):
+	changeFlag = False
 	print("msg from MS")
 
 	print("msglen:%d, nameSize:%d" % (len(msgContent) , int(g_config['nameSize'])))
+
 	if len(msgContent) < int(g_config['nameSize']) :
-		return None
+		return (None,False)
 
 	#目标物发送击中目标物的ID,
 	mid = msgContent[0:g_config['nameSize']] 
@@ -198,5 +197,18 @@ def parseDestMsg(msgContent):
 	for m in g_memArray:
 		if mid == m.id:
 			m.addScore(g_config['scoreUint']) #
+			changeFlag = True
+			break
+	
+	if changeFlag is True:
+		#更新排名
+		g_memArray.sort(key=lambda  x: x.score, reverse = True) 
+		g_TeamArray.sort(key=lambda x: x.totalScore, reverse = True)
 
-	return None
+		for m in g_memArray:  
+			print(" mid:%s score: %d " % (m.id, m.score))
+ 
+		for m in g_TeamArray:
+			print(" teamname: %s totalSocre:%d " %( m.name, m.totalScore))
+
+	return (None,changeFlag)

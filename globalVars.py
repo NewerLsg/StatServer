@@ -19,3 +19,17 @@ def setNameSize(nameSize):
 
 def setTargetUint(targetUint):
     g_config['targetUint'] = targetUint
+
+class SorceRank(object):
+	"""docstring for SorceRank"""
+	def __init__(self):
+		super(SorceRank, self).__init__()
+		self.mem = {}
+		self.team = {}
+
+	def setTeamScore(self, teamname, score):
+		self.team[teamname] = score
+
+	def setMemScore(self, memID, score):
+		self.team[memID] = score
+		

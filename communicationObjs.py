@@ -41,16 +41,17 @@ class Member(object):
 	def addScore(self, score):
 		print("ID:%s get %d score!" % (self.id, score))
 		self.score 	+= score    		 	 		#队员积分
-		self.team.totalSocre += score 		 		#队伍积分	
+		self.team.totalScore += score 		 		#队伍积分	
 		#保留队员在当前队伍的历史积分，避免重新组队导致积分丢失
-		self.team.memScore[self.id] = self.score    
+		self.team.memScore[self.id] = self.score  
+
 
 class TeamObj(object):
 	"""docstring for TeamObj"""
 	def __init__(self, name):
 		super(TeamObj, self).__init__()
 		self.name 		= name
-		self.totalSocre = 0
+		self.totalScore = 0
 		self.reg    	= 0 	#1:有队员,0：无队员
 		self.memScore 	= {}
 		self.num 		= 0
