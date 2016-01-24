@@ -1,5 +1,12 @@
 
 #全局变量
+from threading import  RLock
+
+doorRLock  = RLock()
+memRLock   = RLock()
+teamRLock  = RLock()
+
+
 g_doorArray = []
 g_memArray 	= []
 g_TeamArray = []

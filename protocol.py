@@ -72,6 +72,8 @@ def parseMenMsg(msgContent):
 		if did > g_config['tatolDoors']:
 			return SERVER_TO_MEN + AUTH_DENY + MSG_END #回复一个deny的报文
 		
+		#不需要锁，因为当前门只会请求自己的权限
+		#获取上一个门的状态可能不对，但是由于会轮询，下一次就是准确的
 		curDoor = g_doorArray[did]
 
 		curTime = time.time()
@@ -85,17 +87,18 @@ def parseMenMsg(msgContent):
 
 			if did == 1:
 				print("first door open")
+				
 				return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
 
 			elif  g_doorArray[did - 1].teamIn is not None \
 					and g_doorArray[did - 1].teamIn.totalScore > 0:
-
-				print("score matched")
-
+				
+				
+				print("score matched")			
 				return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
 
-		print("condition not matched")
 
+		print("condition not matched")		
 		return SERVER_TO_MEN + AUTH_DENY + MSG_END
 
 	#开门
@@ -106,6 +109,7 @@ def parseMenMsg(msgContent):
 
 		print("menid:%d" % did)
 
+		#不用锁，当前门只会改自己的状态，不会有其他门来改它不会冲突
 		curDoor = g_doorArray[did] #当前请求的门
 
 		if did > g_config['tatolDoors']:
@@ -132,13 +136,23 @@ def parseTeamMsg(msgContent):
 
 	#名字
 	if subtype == TEAM_NAEM_MSG:
+
+		#获取锁,主要是防止并行的申请
+		teamRLock.acquire()
+
 		for team in g_TeamArray:
 			if team.name == content:
+				#释放锁
+				teamRLock.release()
+
 				return SERVER_TO_TEAM + NAME_UNAVAIL + MSG_END
 
 		#创建新的队伍
 		newTeam = TeamObj(content)
 		g_TeamArray.append(newTeam)
+
+		#释放锁
+		teamRLock.release()
 
 		return SERVER_TO_TEAM + NAME_AVAIL + MSG_END
 
@@ -199,16 +213,5 @@ def parseDestMsg(msgContent):
 			m.addScore(g_config['scoreUint']) #
 			changeFlag = True
 			break
-	
-	if changeFlag is True:
-		#更新排名
-		g_memArray.sort(key=lambda  x: x.score, reverse = True) 
-		g_TeamArray.sort(key=lambda x: x.totalScore, reverse = True)
-
-		for m in g_memArray:  
-			print(" mid:%s score: %d " % (m.id, m.score))
- 
-		for m in g_TeamArray:
-			print(" teamname: %s totalSocre:%d " %( m.name, m.totalScore))
 
 	return (None,changeFlag)

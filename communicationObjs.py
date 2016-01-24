@@ -1,4 +1,5 @@
 from globalVars import *
+from threading import  RLock
 
 """
 通信对象：
@@ -41,9 +42,15 @@ class Member(object):
 	def addScore(self, score):
 		print("ID:%s get %d score!" % (self.id, score))
 		self.score 	+= score    		 	 		#队员积分
+
+		#防止两个队员同时更改队伍分
+		self.team.scoreLock.acquire()
+
 		self.team.totalScore += score 		 		#队伍积分	
 		#保留队员在当前队伍的历史积分，避免重新组队导致积分丢失
 		self.team.memScore[self.id] = self.score  
+
+		self.team.scoreLock.release()
 
 
 class TeamObj(object):
@@ -56,6 +63,7 @@ class TeamObj(object):
 		self.memScore 	= {}
 		self.num 		= 0
 		self.curDoor	= None 	#当前所在关卡
+		self.scoreLock  = RLock()
 
 	def addMem(self, MID):
 		self.num += 1

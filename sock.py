@@ -10,7 +10,6 @@ class ClientSock(QTcpSocket):
 		super(ClientSock, self).__init__(parent)		
 		self.setSocketDescriptor(descriptor)
 		self.readyRead.connect(self.recv)
-		self.disconnected.connect(self.disconnect)
 		self.error.connect(self.sockErr)
 
 
@@ -36,5 +35,3 @@ class ClientSock(QTcpSocket):
 	def sockErr(self):
 		print("Error:%s" % format(self.errorString()))
 		
-	def disconnect(self):
-		self.close()

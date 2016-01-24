@@ -15,14 +15,12 @@ class WorkThread(QThread):
 		sock = ClientSock(self.descriptor, self);
 		self.sock = sock
 		self.connect(self.sock, SIGNAL("updateRank()"),self.updateRank)	
+		self.connect(self.sock, SIGNAL("disconnect()"),self.quit)			
 		self.exec()
 
 	def updateRank(self):
 		self.emit(SIGNAL("updateRank()"))
 
-	def quit(self):
-		print("thread quit")
-		self.tcpServer.close()
 
 
 class  TcpServer(QTcpServer):
@@ -38,8 +36,18 @@ class  TcpServer(QTcpServer):
 		print("new connSock")
 		work = WorkThread(descriptor)
 		self.connect(work, SIGNAL("updateRank()"), self.updateRank)
+		self.connect(work, SIGNAL("finished()"), self.removeWork)
 		self.conns.append(work)
 		work.start()
 	
 	def updateRank(self):
 		self.emit(SIGNAL("updateRank()"))
+
+	def removeWork():
+		print("remove work")  #没有进来
+		work = sender()
+
+		for w in self.conns:
+			if w == work:
+				print("remove work")
+				self.conns.remove(w)

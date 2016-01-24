@@ -1,4 +1,5 @@
 import sys
+import copy  
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtNetwork import *
@@ -23,14 +24,9 @@ class Main(QMainWindow):
 	def startServer(self):
 		port = int(self.ui.lineEdit.text())
 
-		for x in range(1,20):
+		for x in range(1, g_config['tatolDoors']):
 			newDoor = Door(x)
 			g_doorArray.append(newDoor)
-
-		"""
-		self.WorkThread = WorkThread(port, self)
-		self.WorkThread.start()
-		"""
 		
 		self.tcpServer = TcpServer("0.0.0.0", port)
 		self.connect(self.tcpServer,SIGNAL("updateRank()"),self.updateRank)
@@ -49,11 +45,30 @@ class Main(QMainWindow):
 	def updateRank(self):
 		row = len(g_TeamArray)
 		self.ui.tableWidget.setRowCount(row)
+
 		i = int(0)
-		for t in g_TeamArray:
+
+		#为了不影响当前的报文解析,直接复制,可以一部分的避免加锁的情况
+		memRLock.acquire()
+		mem = copy.deepcopy(g_memArray)
+		memRLock.release()
+
+		teamRLock.acquire()
+		team = copy.deepcopy(g_TeamArray)
+		teamRLock.release()
+
+		#更新排名
+		mem.sort(key=lambda  x: x.score, reverse = True) 
+		team.sort(key=lambda x: x.totalScore, reverse = True)
+
+
+		for t in team:
 			self.ui.tableWidget.setItem(i,0,QTableWidgetItem(str(t.name)))
 			self.ui.tableWidget.setItem(i,1,QTableWidgetItem(str(t.totalScore)))	
 			i += 1
+
+		del(team)
+		del(mem)
 
 app = QApplication(sys.argv)
 main = Main()
