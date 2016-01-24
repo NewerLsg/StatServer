@@ -16,13 +16,12 @@ class Main(QMainWindow):
 		super(Main, self).__init__(parent)
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
-		self.ui.lineEdit.setText("9999")
-		self.ui.pushButton.clicked.connect(self.startServer)
-		self.ui.pushButton_2.clicked.connect(self.stopServer)
+		self.ui.StartBtn.clicked.connect(self.startServer)
+		self.ui.StopBtn.clicked.connect(self.stopServer)
 		#self.WorkThread = None
 
 	def startServer(self):
-		port = int(self.ui.lineEdit.text())
+		port = int(self.ui.PortTxt.text())
 
 		for x in range(1, g_config['tatolDoors']):
 			newDoor = Door(x)
@@ -31,20 +30,26 @@ class Main(QMainWindow):
 		self.tcpServer = TcpServer("0.0.0.0", port)
 		self.connect(self.tcpServer,SIGNAL("updateRank()"),self.updateRank)
 
-		self.ui.pushButton.setEnabled(False)
-		self.ui.lineEdit.setEnabled(False)
+		self.ui.StartBtn.setEnabled(False)
+		self.ui.PortTxt.setEnabled(False)
 		print("server started")
 
 	def stopServer(self):
 		#self.WorkThread.quit()
 		self.tcpServer.close()
-		self.ui.pushButton.setEnabled(True)
-		self.ui.lineEdit.setEnabled(True)
+		
+		del(self.tcpServer)
+
+		self.ui.StartBtn.setEnabled(True)
+		self.ui.PortTxt.setEnabled(True)
 		print("server stoped")
 
 	def updateRank(self):
-		row = len(g_TeamArray)
-		self.ui.tableWidget.setRowCount(row)
+		teamRow = len(g_TeamArray)
+		self.ui.TeamRankTb.setRowCount(teamRow)
+
+		memRow = len(g_memArray)
+		self.ui.MemRankTbl.setRowCount(memRow)
 
 		i = int(0)
 
@@ -63,8 +68,17 @@ class Main(QMainWindow):
 
 
 		for t in team:
-			self.ui.tableWidget.setItem(i,0,QTableWidgetItem(str(t.name)))
-			self.ui.tableWidget.setItem(i,1,QTableWidgetItem(str(t.totalScore)))	
+			self.ui.TeamRankTb.setItem(i,0,QTableWidgetItem(str(i + 1)))
+			self.ui.TeamRankTb.setItem(i,1,QTableWidgetItem(str(t.name)))
+			self.ui.TeamRankTb.setItem(i,2,QTableWidgetItem(str(t.totalScore)))	
+			i += 1
+
+		i = 0
+
+		for t in mem:
+			self.ui.MemRankTbl.setItem(i,0,QTableWidgetItem(str(i + 1)))
+			self.ui.MemRankTbl.setItem(i,1,QTableWidgetItem(str(t.id)))
+			self.ui.MemRankTbl.setItem(i,2,QTableWidgetItem(str(t.score)))	
 			i += 1
 
 		del(team)
