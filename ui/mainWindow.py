@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(932, 505)
+        MainWindow.setFixedSize(932, 505)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.groupBox_3 = QtGui.QGroupBox(self.centralwidget)
@@ -51,6 +51,7 @@ class Ui_MainWindow(object):
         self.PortTxt.setMinimumSize(QtCore.QSize(81, 20))
         self.PortTxt.setStyleSheet(_fromUtf8("font: 12pt \"宋体\";"))
         self.PortTxt.setObjectName(_fromUtf8("PortTxt"))
+   
         self.gridLayout.addWidget(self.PortTxt, 1, 2, 1, 1, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.label = QtGui.QLabel(self.groupBox)
         self.label.setStyleSheet(_fromUtf8("font: 12pt \"宋体\";"))
@@ -70,6 +71,10 @@ class Ui_MainWindow(object):
         self.MemRankTbl.setObjectName(_fromUtf8("MemRankTbl"))
         self.MemRankTbl.setColumnCount(3)
         self.MemRankTbl.setRowCount(0)
+        self.MemRankTbl.verticalHeader().setVisible(False)
+        self.MemRankTbl.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+        self.MemRankTbl.horizontalHeader().setResizeMode(QtGui.QHeaderView.Stretch)
+        self.MemRankTbl.horizontalHeader().resizeSections()
         item = QtGui.QTableWidgetItem()
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("宋体"))
@@ -93,6 +98,10 @@ class Ui_MainWindow(object):
         self.TeamRankTb.setObjectName(_fromUtf8("TeamRankTb"))
         self.TeamRankTb.setColumnCount(3)
         self.TeamRankTb.setRowCount(0)
+        self.TeamRankTb.verticalHeader().setVisible(False)
+        self.TeamRankTb.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+        self.TeamRankTb.horizontalHeader().setResizeMode(QtGui.QHeaderView.Stretch)
+        self.TeamRankTb.horizontalHeader().resizeSections()
         item = QtGui.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter|QtCore.Qt.AlignCenter)
         font = QtGui.QFont()

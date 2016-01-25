@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
+
 from PyQt4.QtCore import *
 from globalVars import *
 from communicationObjs import *
 import time
 
-#消息类型
 #设备到服务器
 MEN_TO_SERVER 	=  'DS'  	#门
 TEAM_TO_SERVER  =  'TS'		#队伍
@@ -91,8 +92,7 @@ def parseMenMsg(msgContent):
 				return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
 
 			elif  g_doorArray[did - 1].teamIn is not None \
-					and g_doorArray[did - 1].teamIn.totalScore > 0:
-				
+					and g_scoreRank.getTeamScore(g_doorArray[did - 1].teamIn.name)  > 0:
 				
 				print("score matched")			
 				return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
@@ -136,23 +136,13 @@ def parseTeamMsg(msgContent):
 
 	#名字
 	if subtype == TEAM_NAEM_MSG:
-
-		#获取锁,主要是防止并行的申请
-		teamRLock.acquire()
-
 		for team in g_TeamArray:
 			if team.name == content:
-				#释放锁
-				teamRLock.release()
-
 				return SERVER_TO_TEAM + NAME_UNAVAIL + MSG_END
 
 		#创建新的队伍
 		newTeam = TeamObj(content)
 		g_TeamArray.append(newTeam)
-
-		#释放锁
-		teamRLock.release()
 
 		return SERVER_TO_TEAM + NAME_AVAIL + MSG_END
 
@@ -210,7 +200,7 @@ def parseDestMsg(msgContent):
 	#找出ID对应的组
 	for m in g_memArray:
 		if mid == m.id:
-			m.addScore(g_config['scoreUint']) #
+			m.addScore(g_config['scoreUint']) 
 			changeFlag = True
 			break
 

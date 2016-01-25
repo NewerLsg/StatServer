@@ -1,53 +1,57 @@
+# -*- coding: utf-8 -*-
 from PyQt4.QtCore import *
 from PyQt4.QtNetwork import *
 from sock import *
 
 MAX_CONNECTIONS = 60
 
+"""
+将通信线程与UI线程分离以避免界面卡顿
+"""
+#监听线程
+class ServerThread(QThread):
+	"""docstring for ServerThread"""
+	def __init__(self , port, parent=None):
+		super(ServerThread, self).__init__()
+		self.port = port
 
-class WorkThread(QThread):
-	def __init__(self, descriptor):
-		super(WorkThread, self).__init__()
-		self.tcpServer  =  None
-		self.descriptor = descriptor
-		self.sock 		= None
 	def run(self):
-		sock = ClientSock(self.descriptor, self);
-		self.sock = sock
-		self.connect(self.sock, SIGNAL("updateRank()"),self.updateRank)	
-		self.connect(self.sock, SIGNAL("disconnect()"),self.quit)			
-		self.exec()
-
-	def updateRank(self):
-		self.emit(SIGNAL("updateRank()"))
+		self.tcpServer = TcpServer(self.port)
+		self.exec_()
 
 
+#通信线程		
+class WorkThread(QThread):
+	def __init__(self, descriptor, parent=None):
+		super(WorkThread, self).__init__(parent)
+		self.descriptor = descriptor
+
+	def run(self):
+		self.sock = ClientSock(self.descriptor);
+		self.connect(self.sock, SIGNAL("disconnected()"), self.quitThread)	
+		self.connect(self.sock, SIGNAL("error()"), self.quitThread)			
+		self.exec_()
+
+	def quitThread(self):
+		self.emit(SIGNAL("quitThread()"))
 
 class  TcpServer(QTcpServer):
 	"""docstring for  TcpServer"""
-	def __init__(self,addr, port, parent=None):
+	def __init__(self, port, parent=None):
 		super( TcpServer, self).__init__(parent)
-		self.updateSignal = pyqtSignal()
-		self.listen(QHostAddress(addr), port)
+		self.listen(QHostAddress("0.0.0.0"),port)
 		self.setMaxPendingConnections(MAX_CONNECTIONS)
-		self.conns = [] 			#不能删除，否则对象会被销毁
+		self.conns = [] 	
 
 	def incomingConnection(self, descriptor):
-		print("new connSock")
-		work = WorkThread(descriptor)
-		self.connect(work, SIGNAL("updateRank()"), self.updateRank)
-		self.connect(work, SIGNAL("finished()"), self.removeWork)
+		work = WorkThread(descriptor,self)
+		self.connect(work, SIGNAL("quitThread()"), self.removeWork)
 		self.conns.append(work)
 		work.start()
 	
-	def updateRank(self):
-		self.emit(SIGNAL("updateRank()"))
-
-	def removeWork():
-		print("remove work")  #没有进来
-		work = sender()
-
+	def removeWork(self):
+		work = self.sender()
 		for w in self.conns:
 			if w == work:
-				print("remove work")
+				w.quit()
 				self.conns.remove(w)
