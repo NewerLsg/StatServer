@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+
 from threading import  RLock
 import copy  
 
+#积分排序：包括所有队伍的分、个人的分
 class ScoreRank():
 	"""docstring for ScoreRank"""
+
 	def __init__(self):
 		self.mem = []
 		self.team = []
@@ -39,13 +42,10 @@ class ScoreRank():
 				t.score += score
 				self.team.sort(key=lambda  x: x.score, reverse = True)
 				self.tlock.release()
-				return
-				
+				return	
 
 		self.team.append(scoreEnpty(name, score))
-
 		self.team.sort(key=lambda  x: x.score, reverse = True)
-
 		self.tlock.release()
 
 	def getTeamScore(self,name):
@@ -55,7 +55,7 @@ class ScoreRank():
 
 		for t in self.team:
 			if t.name == name:
-				ret =  t.name
+				ret =  t.score
 				break
 
 		self.tlock.release()

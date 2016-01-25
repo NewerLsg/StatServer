@@ -11,18 +11,17 @@ from threading import  RLock
 """
 class Door(object):
 	"""docstring for Door"""
+
 	def __init__(self, ID):
 		super(Door, self).__init__()
 		self.arg 	 = ID 			#id
 		self.teamIn	 = None			#内部队伍,为空表示没有
 		self.time	 = 1			#队伍的进入时间
 
-	def getTeamIn():
-		return self.teamIn
-
-
+#成员对象:主要是存储自己的ID以及对应的组
 class Member(object):
 	"""docstring for Member"""
+
 	def __init__(self, id, team):
 		super(Member, self).__init__()	
 		self.id 		= id 
@@ -32,19 +31,14 @@ class Member(object):
 		self.team 		= team
 		g_scoreRank.clearMemScore(self.id)
 
-	def getTeamname(self):
-		return self.teamName
-
-	def getID(self):
-		return self.id 
-
 	def addScore(self, score):
 		print("ID:%s get %d score!" % (self.id, score))
 		g_scoreRank.updateScore(self, score)
 
-
+#队伍对象，主要存储队名以及人数
 class TeamObj(object):
 	"""docstring for TeamObj"""
+	
 	def __init__(self, name):
 		super(TeamObj, self).__init__()
 		self.name 		= name
@@ -63,6 +57,3 @@ class TeamObj(object):
 		
 		newMem 	= Member(MID, self)
 		g_memArray.append(newMem)  
-
-	def getName(self):
-		return self.name

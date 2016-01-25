@@ -12,15 +12,23 @@ MAX_CONNECTIONS = 60
 class ServerThread(QThread):
 	"""docstring for ServerThread"""
 	def __init__(self , port, parent=None):
-		super(ServerThread, self).__init__()
+		super(ServerThread, self).__init__(parent)
 		self.port = port
+		self.parent = parent
 
 	def run(self):
+		#将变量初始化在这里很重要,因为在run函数中的变量为本线程的变量
+		#否则会被当成初始化该线程的变量而造成跨线程访问对象的错误(栈内为私有变量)
 		self.tcpServer = TcpServer(self.port)
+		self.connect(self.parent, SIGNAL("ShutDown()"),self.shutDown)
 		self.exec_()
 
+	def shutDown(self):
+		print("shot downing ...")
+		self.tcpServer.cleanWork()
 
-#通信线程		
+
+#通信线程:接收通信套接字初始化TcpSocket,在线程中完成Tcpsocket的读写	
 class WorkThread(QThread):
 	def __init__(self, descriptor, parent=None):
 		super(WorkThread, self).__init__(parent)
@@ -29,14 +37,18 @@ class WorkThread(QThread):
 	def run(self):
 		self.sock = ClientSock(self.descriptor);
 		self.connect(self.sock, SIGNAL("disconnected()"), self.quitThread)	
-		self.connect(self.sock, SIGNAL("error()"), self.quitThread)			
+		self.connect(self.sock, SIGNAL("error()"), self.quitThread)
 		self.exec_()
 
+	#套接字出现问题则直接退出线程
 	def quitThread(self):
 		self.emit(SIGNAL("quitThread()"))
 
+
+#Tcpserver的包装:实现连接套接字的线程处理:包括初始化、退出管理
 class  TcpServer(QTcpServer):
 	"""docstring for  TcpServer"""
+
 	def __init__(self, port, parent=None):
 		super( TcpServer, self).__init__(parent)
 		self.listen(QHostAddress("0.0.0.0"),port)
@@ -46,7 +58,7 @@ class  TcpServer(QTcpServer):
 	def incomingConnection(self, descriptor):
 		work = WorkThread(descriptor,self)
 		self.connect(work, SIGNAL("quitThread()"), self.removeWork)
-		self.conns.append(work)
+		self.conns.append(work)		#1.为了保存管理;2.如为局部变量会造成线程闪退
 		work.start()
 	
 	def removeWork(self):
@@ -55,3 +67,11 @@ class  TcpServer(QTcpServer):
 			if w == work:
 				w.quit()
 				self.conns.remove(w)
+
+	def cleanWork(self):
+		print("clean work ...")
+		for w in self.conns:
+			print("removed")
+			w.quit()
+			self.conns.remove(w)
+	

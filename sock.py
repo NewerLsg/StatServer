@@ -3,8 +3,10 @@ from PyQt4.QtCore import *
 from PyQt4.QtNetwork import *
 from protocol import *
 
+#连接套接字，主要是读取消息、回复消息
 class ClientSock(QTcpSocket):
 	"""docstring for ClientSock"""
+
 	def __init__(self, descriptor,parent=None):
 		super(ClientSock, self).__init__(parent)		
 		self.setSocketDescriptor(descriptor)
@@ -12,15 +14,18 @@ class ClientSock(QTcpSocket):
 
 	def recv(self):
 		while self.canReadLine():
-			rawMsg = self.readLine(128)   		#QBytesArray
+			#readline 返回的是bytes对象,需要decode转化为str
+			rawMsg = self.readLine(128) 
+
 			print("raw:%s,data:%s" % (rawMsg, rawMsg.decode()))
 
-			respv,updateRank = parseMsg(rawMsg.decode())
+			#respv是回复信息,update
+			respv = parseMsg(rawMsg.decode())
 
-			print(" %s , %s" %(str(respv), str(updateRank)))
+			print(" %s " %(str(respv)))
+
 			if respv is not None:
 				print("resp:%s" % str(respv))
 				writen = self.write(str(respv))
-				print("%d" % writen)
 
 			continue

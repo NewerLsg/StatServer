@@ -3,6 +3,7 @@
 from PyQt4.QtCore import *
 from globalVars import *
 from communicationObjs import *
+
 import time
 
 #设备到服务器
@@ -37,7 +38,7 @@ def parseMsg(rawMsg):
 	resp = None
 
 	if len(rawMsg) < 2 :
-		return None, False
+		return None
 
 	msgType = rawMsg[0:2]
 	msgContent = rawMsg[2:-1]
@@ -46,10 +47,10 @@ def parseMsg(rawMsg):
 	print("%s" % rawMsg[2:-1])
 
 	if msgType == MEN_TO_SERVER:
-		return  parseMenMsg(msgContent),False
+		return  parseMenMsg(msgContent)
 
 	elif msgType == TEAM_TO_SERVER:
-		return  parseTeamMsg(msgContent),False
+		return  parseTeamMsg(msgContent)
 
 	elif msgType == DEST_TO_SERVER:
 		return  parseDestMsg(msgContent)
@@ -67,7 +68,8 @@ def parseMenMsg(msgContent):
 	#开门权限
 	if subtype == MEN_AUTH_MSG:
 		print("get auth")
-		did 	= int(content[0:])  #门id
+
+		did = int(content[0:])  
 
 		#超过门的权限
 		if did > g_config['tatolDoors']:
@@ -76,8 +78,8 @@ def parseMenMsg(msgContent):
 		#不需要锁，因为当前门只会请求自己的权限
 		#获取上一个门的状态可能不对，但是由于会轮询，下一次就是准确的
 		curDoor = g_doorArray[did]
-
 		curTime = time.time()
+
 		#门内物无队伍 or 门内队伍被淘汰了——给开门权限
 			#当前门是第一道门，则直接给权限
 			#其他门,前一个门有队伍且积分达到指标,给权限
@@ -88,15 +90,12 @@ def parseMenMsg(msgContent):
 
 			if did == 1:
 				print("first door open")
-				
 				return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
 
 			elif  g_doorArray[did - 1].teamIn is not None \
 					and g_scoreRank.getTeamScore(g_doorArray[did - 1].teamIn.name)  > 0:
-				
 				print("score matched")			
 				return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
-
 
 		print("condition not matched")		
 		return SERVER_TO_MEN + AUTH_DENY + MSG_END
@@ -110,10 +109,10 @@ def parseMenMsg(msgContent):
 		print("menid:%d" % did)
 
 		#不用锁，当前门只会改自己的状态，不会有其他门来改它不会冲突
-		curDoor = g_doorArray[did] #当前请求的门
+		curDoor = g_doorArray[did] 		#当前请求的门
 
 		if did > g_config['tatolDoors']:
-			return ERVER_TO_MEN + '00' + MSG_END #这个队员不属于任何队伍，亮起0个目标物
+			return ERVER_TO_MEN + '00' + MSG_END 		#这个队员不属于任何队伍，亮起0个目标物
 
 		for m in g_memArray:
 			if m.id == mid:
@@ -123,7 +122,7 @@ def parseMenMsg(msgContent):
 				count = str(m.team.num * g_config['targetUint'])
 				return  SERVER_TO_MEN + count.rjust(2,'0') + MSG_END
 				
-		return SERVER_TO_MEN + '00' + MSG_END #这个队员不属于任何队伍，亮起0个目标物
+		return SERVER_TO_MEN + '00' + MSG_END 		#这个队员不属于任何队伍，亮起0个目标物
 	
 
 def parseTeamMsg(msgContent):
@@ -184,24 +183,22 @@ def parseTeamMsg(msgContent):
 		return None
 
 def parseDestMsg(msgContent):
-	changeFlag = False
-	print("msg from MS")
 
+	print("msg from MS")
 	print("msglen:%d, nameSize:%d" % (len(msgContent) , int(g_config['nameSize'])))
 
 	if len(msgContent) < int(g_config['nameSize']) :
-		return (None,False)
+		return None
 
 	#目标物发送击中目标物的ID,
 	mid = msgContent[0:g_config['nameSize']] 
 
 	print("%s" % mid)
 
-	#找出ID对应的组
+	#找出ID对应的组,并更新分数
 	for m in g_memArray:
 		if mid == m.id:
 			m.addScore(g_config['scoreUint']) 
-			changeFlag = True
 			break
 
-	return (None,changeFlag)
+	return None
