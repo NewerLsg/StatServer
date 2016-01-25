@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(398, 251)
+        Dialog.setFixedSize(398, 251)
         self.groupBox_7 = QtGui.QGroupBox(Dialog)
         self.groupBox_7.setGeometry(QtCore.QRect(9, 9, 381, 231))
         self.groupBox_7.setTitle(_fromUtf8(""))

@@ -1,5 +1,8 @@
+# -*- coding: utf-8 -*-
+
 from globalVars import *
 from threading import  RLock
+
 
 """
 通信对象：
@@ -24,14 +27,10 @@ class Member(object):
 		super(Member, self).__init__()	
 		self.id 		= id 
 		self.team 		= team
-		self.score 		= 0
 	
 	def reset(self, team):
-		self.score  	= 0
 		self.team 		= team
-		
-	def getScore(self):
-		return self.score
+		g_scoreRank.clearMemScore(self.id)
 
 	def getTeamname(self):
 		return self.teamName
@@ -41,16 +40,7 @@ class Member(object):
 
 	def addScore(self, score):
 		print("ID:%s get %d score!" % (self.id, score))
-		self.score 	+= score    		 	 		#队员积分
-
-		#防止两个队员同时更改队伍分
-		self.team.scoreLock.acquire()
-
-		self.team.totalScore += score 		 		#队伍积分	
-		#保留队员在当前队伍的历史积分，避免重新组队导致积分丢失
-		self.team.memScore[self.id] = self.score  
-
-		self.team.scoreLock.release()
+		g_scoreRank.updateScore(self, score)
 
 
 class TeamObj(object):
@@ -58,12 +48,9 @@ class TeamObj(object):
 	def __init__(self, name):
 		super(TeamObj, self).__init__()
 		self.name 		= name
-		self.totalScore = 0
 		self.reg    	= 0 	#1:有队员,0：无队员
-		self.memScore 	= {}
 		self.num 		= 0
 		self.curDoor	= None 	#当前所在关卡
-		self.scoreLock  = RLock()
 
 	def addMem(self, MID):
 		self.num += 1
@@ -77,9 +64,5 @@ class TeamObj(object):
 		newMem 	= Member(MID, self)
 		g_memArray.append(newMem)  
 
-
 	def getName(self):
 		return self.name
-
-	def getScore(self):
-		return self.score

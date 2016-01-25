@@ -1,5 +1,9 @@
+# -*- coding: utf-8 -*-
+
 import sys
-import copy  
+import time
+from threading import Timer
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtNetwork import *
@@ -10,6 +14,7 @@ from communicationObjs import *
 
 from ui.mainWindow import *
 from config import *
+from tableItem import *
 
 class Main(QMainWindow):
 
@@ -21,71 +26,57 @@ class Main(QMainWindow):
 		self.ui.StopBtn.clicked.connect(self.stopServer)
 		self.ui.action.triggered.connect(self.showConfig)
 
-		#self.WorkThread = None
+		self.timer = None
 
 	def startServer(self):
 		port = int(self.ui.PortTxt.text())
+
+		self.timer = QTimer()
+		self.timer.timeout.connect(self.updateRank)
+		self.timer.start(1000)
 
 		for x in range(1, g_config['tatolDoors']):
 			newDoor = Door(x)
 			g_doorArray.append(newDoor)
 		
-		self.tcpServer = TcpServer("0.0.0.0", port)
-		self.connect(self.tcpServer,SIGNAL("updateRank()"),self.updateRank)
-
 		self.ui.StartBtn.setEnabled(False)
 		self.ui.PortTxt.setEnabled(False)
-		print("server started")
+		self.tcpServer = ServerThread(port)
+		self.tcpServer.start()
 
 	def stopServer(self):
-		#self.WorkThread.quit()
-		self.tcpServer.close()
-		
-		del(self.tcpServer)
 
 		self.ui.StartBtn.setEnabled(True)
 		self.ui.PortTxt.setEnabled(True)
-		print("server stoped")
+		self.timer.stop();
 
 	def updateRank(self):
-		teamRow = len(g_TeamArray)
+		teamRow = len(g_scoreRank.team)
 		self.ui.TeamRankTb.setRowCount(teamRow)
 
-		memRow = len(g_memArray)
+		memRow = len(g_scoreRank.mem)
 		self.ui.MemRankTbl.setRowCount(memRow)
 
 		i = int(0)
 
 		#为了不影响当前的报文解析,直接复制,可以一部分的避免加锁的情况
-		memRLock.acquire()
-		mem = copy.deepcopy(g_memArray)
-		memRLock.release()
-
-		teamRLock.acquire()
-		team = copy.deepcopy(g_TeamArray)
-		teamRLock.release()
-
-		#更新排名
-		mem.sort(key=lambda  x: x.score, reverse = True) 
-		team.sort(key=lambda x: x.totalScore, reverse = True)
-
-
+		team = g_scoreRank.getTeamScoreList()
+		mem = g_scoreRank.getMemScoreList()
+			
 		for t in team:
-			self.ui.TeamRankTb.setItem(i,0,QTableWidgetItem(str(i + 1)))
-			self.ui.TeamRankTb.setItem(i,1,QTableWidgetItem(str(t.name)))
-			self.ui.TeamRankTb.setItem(i,2,QTableWidgetItem(str(t.totalScore)))	
+
+			self.ui.TeamRankTb.setItem(i,0,TableItem(str(i + 1)))
+			self.ui.TeamRankTb.setItem(i,1,TableItem(str(t.name)))
+			self.ui.TeamRankTb.setItem(i,2,TableItem(str(t.score)))	
 			i += 1
 
 		i = 0
 
 		for t in mem:
-			self.ui.MemRankTbl.setItem(i,0,QTableWidgetItem(str(i + 1)))
-			self.ui.MemRankTbl.setItem(i,1,QTableWidgetItem(str(t.id)))
-			self.ui.MemRankTbl.setItem(i,2,QTableWidgetItem(str(t.score)))	
+			self.ui.MemRankTbl.setItem(i,0,TableItem(str(i + 1)))
+			self.ui.MemRankTbl.setItem(i,1,TableItem(str(t.name)))
+			self.ui.MemRankTbl.setItem(i,2,TableItem(str(t.score)))	
 			i += 1
-
-		del(team)
-		del(mem)
 
 	def showConfig(self):
 		self.configWindow =  ConfigDialog()
