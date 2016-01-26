@@ -26,6 +26,7 @@ class ServerThread(QThread):
 	def shutDown(self):
 		print("shot downing ...")
 		self.tcpServer.cleanWork()
+		self.tcpServer.close()
 
 
 #通信线程:接收通信套接字初始化TcpSocket,在线程中完成Tcpsocket的读写	
@@ -40,10 +41,18 @@ class WorkThread(QThread):
 		self.connect(self.sock, SIGNAL("error()"), self.quitThread)
 		self.exec_()
 
-	#套接字出现问题则直接退出线程
+	#套接字出现问题
 	def quitThread(self):
+		print("close client sock")
+		self.clear()
 		self.emit(SIGNAL("quitThread()"))
 
+	#清理线程
+	def clear(self):
+		print("close by main thread")
+		self.sock.close()
+		self.quit()
+		
 
 #Tcpserver的包装:实现连接套接字的线程处理:包括初始化、退出管理
 class  TcpServer(QTcpServer):
@@ -72,6 +81,6 @@ class  TcpServer(QTcpServer):
 		print("clean work ...")
 		for w in self.conns:
 			print("removed")
-			w.quit()
+			w.clear()
 			self.conns.remove(w)
 	

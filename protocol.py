@@ -27,8 +27,8 @@ MEN_OPEN_MSG	=  '01'		#上传开门者ID
 
 #组队靶
 TEAM_NAEM_MSG	=  '00'		#上传队名
-NAME_AVAIL		=  '00'		#名字可用
-NAME_UNAVAIL	=  '01'		#名字被占用,不可用
+NAME_AVAIL		=  '01'		#名字可用
+NAME_UNAVAIL	=  '00'		#名字被占用,不可用
 
 TEAM_ID_MSG		=  '01'		#上传对内成员ID列表
 
