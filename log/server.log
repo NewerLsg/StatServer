@@ -1,0 +1,25 @@
+Wed, 27 Jan 2016 20:39:41  Start server.
+Wed, 27 Jan 2016 20:39:45  req:[TS00HD].
+Wed, 27 Jan 2016 20:39:45  team request
+Wed, 27 Jan 2016 20:39:45  regist name.
+Wed, 27 Jan 2016 20:39:45  valid name.
+Wed, 27 Jan 2016 20:39:45  resp [ST01]
+Wed, 27 Jan 2016 20:39:45  resp sended,len[5]
+Wed, 27 Jan 2016 20:39:45  req:[TS00LD].
+Wed, 27 Jan 2016 20:39:45  team request
+Wed, 27 Jan 2016 20:39:45  regist name.
+Wed, 27 Jan 2016 20:39:45  valid name.
+Wed, 27 Jan 2016 20:39:45  resp [ST01]
+Wed, 27 Jan 2016 20:39:45  resp sended,len[5]
+Wed, 27 Jan 2016 20:39:45  req:[TS00HD].
+Wed, 27 Jan 2016 20:39:45  team request
+Wed, 27 Jan 2016 20:39:45  regist name.
+Wed, 27 Jan 2016 20:39:45  invalid name.
+Wed, 27 Jan 2016 20:39:45  resp [ST00]
+Wed, 27 Jan 2016 20:39:45  resp sended,len[5]
+Wed, 27 Jan 2016 20:39:45  req:[TS0102001002HD].
+Wed, 27 Jan 2016 20:39:45  team request
+Wed, 27 Jan 2016 20:39:45  send member IDs, num[2]
+Wed, 27 Jan 2016 20:39:45  namelist:[001002], teamname:[HD]
+Wed, 27 Jan 2016 20:39:45  ID[001] added to team [HD].
+Wed, 27 Jan 2016 20:39:45  ID[002] added to team [HD].

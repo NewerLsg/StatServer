@@ -58,13 +58,13 @@ class Form(QDialog):
         self.socket.write("TS00HD\n")
         self.socket.write("TS00LD\n")
         self.socket.write("TS00HD\n")
-        self.socket.write("TS0102ABHD\n")
-        self.socket.write("TS0103CDELD\n")
+        self.socket.write("TS0102001002HD\n")
+        self.socket.write("TS0103003004005LD\n")
 
         #目标物被设计
-        self.socket.write("MSA\n")
-        self.socket.write("MSC\n")
-        self.socket.write("MSD\n")
+        self.socket.write("MS001\n")
+        self.socket.write("MS003\n")
+        self.socket.write("MS005\n")
 
         #门请求权限
         self.socket.write("DS0001\n")
@@ -72,17 +72,19 @@ class Form(QDialog):
         self.socket.write("DS0003\n")
 
         #HD队1号开门,应该是允许
-        self.socket.write("DS01A01\n")
+        self.socket.write("DS0100101\n")
 
         #LD队1号开门,应该是允许
-        self.socket.write("DS01C01\n")
+        self.socket.write("DS0100301\n")
 
         #HD队2号开门,应该是允许
-        self.socket.write("DS01A02\n")
+        self.socket.write("DS0100202\n")
 
 
         self.socket.write("DS0001\n")
+
         self.socket.write("DS0002\n")
+        
         self.socket.write("DS0003\n")
 
         self.lineedit.setText("")

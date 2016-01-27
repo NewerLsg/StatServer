@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+
 from PyQt4.QtCore import *
 from PyQt4.QtNetwork import *
 from sock import *
+
 
 MAX_CONNECTIONS = 60
 
@@ -24,7 +26,6 @@ class ServerThread(QThread):
 		self.exec_()
 
 	def shutDown(self):
-		print("shot downing ...")
 		self.tcpServer.cleanWork()
 		self.tcpServer.close()
 
@@ -78,7 +79,6 @@ class  TcpServer(QTcpServer):
 				self.conns.remove(w)
 
 	def cleanWork(self):
-		print("clean work ...")
 		for w in self.conns:
 			print("removed")
 			w.clear()

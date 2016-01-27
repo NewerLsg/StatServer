@@ -3,6 +3,7 @@
 from PyQt4.QtCore import *
 from globalVars import *
 from communicationObjs import *
+from log import *
 
 import time
 
@@ -20,8 +21,8 @@ SERVER_TO_DEST	=  'SM'  	#目标物
 #门设备
 MEN_AUTH_MSG	=  '00'		#请求开门权限
 
-AUTH_ACCESS		=  '00'		#赋予权限
-AUTH_DENY		=  '01'		#赋予权限
+AUTH_ACCESS		=  '01'		#赋予权限
+AUTH_DENY		=  '00'		#不赋予权限
 
 MEN_OPEN_MSG	=  '01'		#上传开门者ID
 
@@ -57,7 +58,7 @@ def parseMsg(rawMsg):
 
 
 def parseMenMsg(msgContent):
-	print("msg from door")
+	serverLog.debug("type:[DS]")
 
 	if len(msgContent) < 3:
 		return None
@@ -67,12 +68,13 @@ def parseMenMsg(msgContent):
 
 	#开门权限
 	if subtype == MEN_AUTH_MSG:
-		print("get auth")
-
 		did = int(content[0:])  
 
-		#超过门的权限
+		serverLog.debug("[%d] request open authority.",did)
+
+		#超过门数的限制
 		if did > g_config['tatolDoors']:
+			serverLog.debug("invalid door.")
 			return SERVER_TO_MEN + AUTH_DENY + MSG_END #回复一个deny的报文
 		
 		#不需要锁，因为当前门只会请求自己的权限
@@ -86,71 +88,80 @@ def parseMenMsg(msgContent):
 		if curDoor.teamIn is None \
 				or curDoor.time < curTime - g_config['timeLimit']:	
 
-			print("prefix condition matched.")
+			serverLog.debug("prefix condition matched.")
 
 			if did == 1:
-				print("first door open")
+				serverLog.debug("first door open")
+
 				return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
 
 			elif  g_doorArray[did - 1].teamIn is not None \
 					and g_scoreRank.getTeamScore(g_doorArray[did - 1].teamIn.name)  > 0:
-				print("score matched")			
+
+				serverLog.debug("score matched")		
 				return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
 
-		print("condition not matched")		
+		serverLog.debug("condition not matched")
+
 		return SERVER_TO_MEN + AUTH_DENY + MSG_END
 
 	#开门
 	elif subtype == MEN_OPEN_MSG:
-		print("open door")
-		mid = content[0:1] #取得开门者ID
-		did = int(content[1:])  #门id
+		
+		mid = content[0:g_config['nameSize']] #取得开门者ID
+		did = int(content[g_config['nameSize']])  #门id
 
-		print("menid:%d" % did)
+		serverLog.debug("door open, door id[%d], mem id[%s]", did, mid)
 
 		#不用锁，当前门只会改自己的状态，不会有其他门来改它不会冲突
 		curDoor = g_doorArray[did] 		#当前请求的门
 
 		if did > g_config['tatolDoors']:
+			serverLog.debug("mem id[%s] is not in any team.", mid)
 			return ERVER_TO_MEN + '00' + MSG_END 		#这个队员不属于任何队伍，亮起0个目标物
 
 		for m in g_memArray:
 			if m.id == mid:
-				print("find team:%s" % m.team.name)
 				curDoor.teamIn = m.team
 				curDoor.time   = time.time()
-				count = str(m.team.num * g_config['targetUint'])
+				count = str(int(m.team.num) * int(g_config['targetUint']))
+
+				serverLog.debug("get team, team members[%d].", count)
 				return  SERVER_TO_MEN + count.rjust(2,'0') + MSG_END
 				
 		return SERVER_TO_MEN + '00' + MSG_END 		#这个队员不属于任何队伍，亮起0个目标物
 	
 
 def parseTeamMsg(msgContent):
-	print("msg from TS")
-
+	
 	subtype = msgContent[0:2]
 	content = msgContent[2:]
 
-	print("subtype:%s, content:%s" %(subtype, content))
+	serverLog.debug("team request")
 
 	#名字
 	if subtype == TEAM_NAEM_MSG:
+		serverLog.debug("regist name.")
 		for team in g_TeamArray:
 			if team.name == content:
+				serverLog.debug("invalid name.")
 				return SERVER_TO_TEAM + NAME_UNAVAIL + MSG_END
 
 		#创建新的队伍
 		newTeam = TeamObj(content)
 		g_TeamArray.append(newTeam)
 
+		serverLog.debug("valid name.")
 		return SERVER_TO_TEAM + NAME_AVAIL + MSG_END
 
 	#队员ID列表
 	elif subtype == TEAM_ID_MSG :
+
 		#将队员加入ID
 		num = int(content[0:2])
 
-		print("num:%d" % (num))
+		serverLog.debug("send member IDs, num[%d]", num)
+
 		if num <= 0:
 			return None,
 
@@ -161,12 +172,13 @@ def parseTeamMsg(msgContent):
 
 		#必须处理不合格的报文
 		if len(content) < nameListEnd:
+			serverLog.debug("invalid name list.", num)
 			return None
 
 		namelist = content[2:nameListEnd]
 		teamName = content[nameListEnd:]
 
-		print("list:%s, teamname:%s" % (namelist, teamName))
+		serverLog.debug("namelist:[%s], teamname:[%s]", namelist, teamName)
 
 		#将ID加入队伍
 		for team in g_TeamArray:
@@ -174,7 +186,6 @@ def parseTeamMsg(msgContent):
 				pos = int(0)
 				for x in range(1, num + 1):
 					end = int(pos + g_config['nameSize'])
-					print("ID[%d] :%s "  % (x, namelist[pos:end]))
 					team.addMem(namelist[pos:end])
 					pos += g_config['nameSize'] 
 				team.reg = 1
@@ -183,17 +194,16 @@ def parseTeamMsg(msgContent):
 		return None
 
 def parseDestMsg(msgContent):
+	serverLog.debug("msg from MS")
 
-	print("msg from MS")
-	print("msglen:%d, nameSize:%d" % (len(msgContent) , int(g_config['nameSize'])))
-
-	if len(msgContent) < int(g_config['nameSize']) :
+	if len(msgContent) != int(g_config['nameSize']) :
+		serverLog.debug("invalid ID:[%d]", mid)
 		return None
 
 	#目标物发送击中目标物的ID,
 	mid = msgContent[0:g_config['nameSize']] 
 
-	print("%s" % mid)
+	serverLog.debug("ID:[%d]", mid)
 
 	#找出ID对应的组,并更新分数
 	for m in g_memArray:

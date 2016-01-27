@@ -15,7 +15,7 @@ g_scoreRank = ScoreRank()
 
 #可变配置项
 g_config = {'scoreUint': 10, 	#目标分值
-			'nameSize':1,		#名字大小
+			'nameSize':3,		#名字大小
 			'targetUint':5,		#人均目标
 			'tatolDoors':18,	#总门设备(关卡总数)
 			'timeLimit':60}		#通关时限

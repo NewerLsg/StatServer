@@ -14,7 +14,13 @@ from config import *
 from tcpserver import *
 from tableItem import *
 from ui.mainWindow import *
+from log import *
 
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
 
 class Main(QMainWindow):
 
@@ -44,6 +50,7 @@ class Main(QMainWindow):
 		self.tcpServer.start()
 		self.timer.start(1000)
 
+		serverLog.debug("Start server.")
 		
 	def stopServer(self):
 		self.emit(SIGNAL("ShutDown()"))
@@ -52,6 +59,8 @@ class Main(QMainWindow):
 		self.ui.StartBtn.setEnabled(True)
 		self.ui.PortTxt.setEnabled(True)
 		self.ui.StopBtn.setEnabled(False)
+
+		serverLog.debug("Stop server.")
 
 	def updateRank(self):
 		teamRow = len(g_scoreRank.team)
@@ -84,6 +93,14 @@ class Main(QMainWindow):
 		self.configWindow.setWindowModality(Qt.ApplicationModal)
 		self.configWindow.show()
 
+	def closeEvent(self, event):
+		reply = QtGui.QMessageBox.question(self, _fromUtf8('退出'),
+			_fromUtf8("确认退出?"), QtGui.QMessageBox.Yes |
+			QtGui.QMessageBox.No, QtGui.QMessageBox.No)
+		if reply == QtGui.QMessageBox.Yes:
+			event.accept()
+		else:
+			event.ignore()
 
 app = QApplication(sys.argv)
 main = Main()

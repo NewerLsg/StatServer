@@ -2,6 +2,7 @@
 
 from globalVars import *
 from threading import  RLock
+from log import *
 
 
 """
@@ -32,7 +33,7 @@ class Member(object):
 		g_scoreRank.clearMemScore(self.id)
 
 	def addScore(self, score):
-		print("ID:%s get %d score!" % (self.id, score))
+		serverLog.debug("ID:[%s] get [%d] score!",self.id, score)
 		g_scoreRank.updateScore(self, score)
 
 #队伍对象，主要存储队名以及人数
@@ -41,10 +42,10 @@ class TeamObj(object):
 	
 	def __init__(self, name):
 		super(TeamObj, self).__init__()
-		self.name 		= name
-		self.reg    	= 0 	#1:有队员,0：无队员
-		self.num 		= 0
-		self.curDoor	= None 	#当前所在关卡
+		self.name 		= str(name)
+		self.reg    	= int(0) 	#1:有队员,0：无队员
+		self.num 		= int(0)
+		self.curDoor	= None 		#当前所在关卡
 
 	def addMem(self, MID):
 		self.num += 1
@@ -53,7 +54,7 @@ class TeamObj(object):
 				m.reset(self)
 				return
 
-		print("new mem, %s" % MID)
+		serverLog.debug("ID[%s] added to team [%s].", MID, self.name)
 		
 		newMem 	= Member(MID, self)
 		g_memArray.append(newMem)  
