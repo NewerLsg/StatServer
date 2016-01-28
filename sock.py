@@ -13,6 +13,7 @@ class ClientSock(QTcpSocket):
 		super(ClientSock, self).__init__(parent)
 		self.setSocketDescriptor(descriptor)
 		self.readyRead.connect(self.recv)
+		self.peer = None
 
 	def recv(self):
 		while self.canReadLine():
@@ -22,19 +23,19 @@ class ClientSock(QTcpSocket):
 			serverLog.debug("req:[%s].",rawMsg.decode()[0:-1])
 
 			#respv是回复信息,update
-			respv = parseMsg(rawMsg.decode())
+			respv = parseMsg(rawMsg.decode(), self)
 
-			serverLog.debug("resp [%s]",str(respv[0:-1]))
+			if respv is not None:
+				serverLog.debug("resp [%s]",str(respv[0:-1]))
+			else:
+				serverLog.debug("resp [None]")
 
 			self.resp(str(respv))
 
 			continue
 
 	def resp(self, msg):
-
-		if msg == "door open":
-			
-
-		else
-			writen = self.write()
+		
+		if msg is not None:
+			writen = self.write(msg)
 			serverLog.debug("resp sended,len[%d]",int(writen))

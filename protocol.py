@@ -33,19 +33,31 @@ NAME_UNAVAIL	=  '00'		#名字被占用,不可用
 
 TEAM_ID_MSG		=  '01'		#上传对内成员ID列表
 
+#目标物
+DEST_INIT		=  '00'		#目标物上传状态
+DEST_SHOOTED	=  '01'		#目标物被击中
+
+RESP_DEST_INIT  =   'TI'	#返回中携带的字段
+
+
+#子类型长度,目前均为2字节
+MSGTYEP_LEN		=   2
+SUBTYPE_LEN 	= 	2		
+
+#结束标志-换行
 MSG_END			=  '\n'
 
-def parseMsg(rawMsg):
+def parseMsg(rawMsg, sock):
 	resp = None
 
 	if len(rawMsg) < 2 :
 		return None
 
-	msgType = rawMsg[0:2]
-	msgContent = rawMsg[2:-1]
+	msgType 	= rawMsg[0:MSGTYEP_LEN]
+	msgContent 	= rawMsg[MSGTYEP_LEN:-1]
 
-	print("%s" % rawMsg[0:2])
-	print("%s" % rawMsg[2:-1])
+	print("%s" % msgType)
+	print("%s" % msgContent)
 
 	if msgType == MEN_TO_SERVER:
 		return  parseMenMsg(msgContent)
@@ -54,7 +66,7 @@ def parseMsg(rawMsg):
 		return  parseTeamMsg(msgContent)
 
 	elif msgType == DEST_TO_SERVER:
-		return  parseDestMsg(msgContent)
+		return  parseDestMsg(msgContent, sock)
 
 
 def parseMenMsg(msgContent):
@@ -63,8 +75,8 @@ def parseMenMsg(msgContent):
 	if len(msgContent) < 3:
 		return None
 
-	subtype = msgContent[0:2]
-	content = msgContent[2:]
+	subtype = msgContent[0:SUBTYPE_LEN]
+	content = msgContent[SUBTYPE_LEN:]
 
 	#开门权限
 	if subtype == MEN_AUTH_MSG:
@@ -73,7 +85,7 @@ def parseMenMsg(msgContent):
 		serverLog.debug("[%d] request open authority.",did)
 
 		#超过门数的限制
-		if did > g_config['tatolDoors']:
+		if did > g_config['tatolDoors'] or did < 0:
 			serverLog.debug("invalid door.")
 			return SERVER_TO_MEN + AUTH_DENY + MSG_END #回复一个deny的报文
 		
@@ -118,24 +130,35 @@ def parseMenMsg(msgContent):
 
 		if did > g_config['tatolDoors']:
 			serverLog.debug("mem id[%s] is not in any team.", mid)
-			return ERVER_TO_MEN + '00' + MSG_END 		#这个队员不属于任何队伍，亮起0个目标物
+			return None 		#这个队员不属于任何队伍，亮起0个目标物
 
 		for m in g_memArray:
 			if m.id == mid:
 				curDoor.teamIn = m.team
 				curDoor.time   = time.time()
+				serverLog.debug("get team, team members[%s].", int(m.team.num))
+
 				count = str(int(m.team.num) * int(g_config['targetUint']))
 
-				serverLog.debug("get team, team members[%d].", count)
-				return  SERVER_TO_MEN + count.rjust(2,'0') + MSG_END
+				for t in curDoor.targets:
+					if count > 0:
+						#点亮
+						t.setStat("SM00\n")
+					else:
+						#熄灭
+						t.setStat("SM001\n")	 	
+				 	count -= 1
+
 				
-		return SERVER_TO_MEN + '00' + MSG_END 		#这个队员不属于任何队伍，亮起0个目标物
+				return None
+				
+		return None 		#这个队员不属于任何队伍，亮起0个目标物
 	
 
 def parseTeamMsg(msgContent):
 	
-	subtype = msgContent[0:2]
-	content = msgContent[2:]
+	subtype = msgContent[0:SUBTYPE_LEN]
+	content = msgContent[SUBTYPE_LEN:]
 
 	serverLog.debug("team request")
 
@@ -193,22 +216,49 @@ def parseTeamMsg(msgContent):
 
 		return None
 
-def parseDestMsg(msgContent):
+def parseDestMsg(msgContent, sock):
 	serverLog.debug("msg from MS")
 
-	if len(msgContent) != int(g_config['nameSize']) :
-		serverLog.debug("invalid ID:[%d]", mid)
-		return None
+	subtype = msgContent[0:SUBTYPE_LEN]
+	content = msgContent[SUBTYPE_LEN:]
 
-	#目标物发送击中目标物的ID,
-	mid = msgContent[0:g_config['nameSize']] 
+	if subtype == DEST_INIT:
+		serverLog.debug("target init.")
 
-	serverLog.debug("ID:[%d]", mid)
+		if len(content) != 4:
+			serverLog.debug("invalid req.")
+			return 
 
-	#找出ID对应的组,并更新分数
-	for m in g_memArray:
-		if mid == m.id:
-			m.addScore(g_config['scoreUint']) 
-			break
+		tid = int(content[0:2])
+		did = int(content[2:])
+
+		if did > g_config['tatolDoors']  or did < 0:
+			serverLog.debug("door don't exist[%d].", did)
+			return 
+
+		for t in g_doorArray[id].targets:
+			if t.id == tid:
+				serverLog.debug("target[%d] already init.", tid)
+				return
+
+		g_doorArray[did].targets.append(Target(tid, g_doorArray[did], sock))
+
+		serverLog.debug("target[%d] init succ.", tid)
+
+		return 
+
+	elif subtype == DEST_SHOOTED:
+		serverLog.debug("target shooted.")
+
+		if len(content) != int(g_config['nameSize']) :
+			serverLog.debug("invalid ID:[%s], len don't matched", content)
+
+		#找出ID对应的组,并更新分数
+		for m in g_memArray:
+			if content == m.id:
+				m.addScore(g_config['scoreUint']) 
+				return
+
+	serverLog.debug("ID[%d] don't exist.", content)
 
 	return None

@@ -71,6 +71,12 @@ class Form(QDialog):
         self.socket.write("DS0002\n")
         self.socket.write("DS0003\n")
 
+        self.socket.write("DS000101\n")
+
+        self.socket.write("DS000201\n")
+        
+        self.socket.write("DS000102\n")
+
         #HD队1号开门,应该是允许
         self.socket.write("DS0100101\n")
 
@@ -81,11 +87,11 @@ class Form(QDialog):
         self.socket.write("DS0100202\n")
 
 
-        self.socket.write("DS0001\n")
+        self.socket.write("DS010001\n")
 
-        self.socket.write("DS0002\n")
+        self.socket.write("DS010002\n")
         
-        self.socket.write("DS0003\n")
+        self.socket.write("DS010003\n")
 
         self.lineedit.setText("")
 

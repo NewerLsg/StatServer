@@ -22,11 +22,21 @@ class Door(object):
 
 class Target(object):
 	"""docstring for Target"""
-	def __init__(self, ID，MID, sock):
+	def __init__(self, ID, door, sock):
 		super(Target, self).__init__()
-		self.ID   = ID
-		self.MID  = MID
+		self.id   = ID
+		self.door = door
 		self.sock = sock 
+		self.sock.peer = self
+
+	def setStat(self, msg):
+		self.sock.write(msg)
+
+	def closeByAccient():
+		for t in self.door.targets:
+			if t == self:
+				self.door.targets.remove(t)
+			return
 		
 
 #成员对象:主要是存储自己的ID以及对应的组

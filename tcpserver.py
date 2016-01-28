@@ -66,10 +66,18 @@ class  TcpServer(QTcpServer):
 		self.conns = [] 	
 
 	def incomingConnection(self, descriptor):
-		work = WorkThread(descriptor,self)
-		self.connect(work, SIGNAL("quitThread()"), self.removeWork)
-		self.conns.append(work)		#1.为了保存管理;2.如为局部变量会造成线程闪退
-		work.start()
+		sock = ClientSock(descriptor)
+
+		self.connect(sock, SIGNAL("disconnected()"), self.clearSock)	
+		self.connect(sock, SIGNAL("error()"), self.clearSock)
+
+		self.conns.append(sock)
+
+		#暂时去掉这里的多线程
+		#work = WorkThread(descriptor,self)
+		#self.connect(work, SIGNAL("quitThread()"), self.removeWork)
+		#self.conns.append(work)		#1.为了保存管理;2.如为局部变量会造成线程闪退
+		#work.start()
 	
 	def removeWork(self):
 		work = self.sender()
@@ -83,4 +91,16 @@ class  TcpServer(QTcpServer):
 			print("removed")
 			w.clear()
 			self.conns.remove(w)
-	
+
+	def clearSock(self):
+		sock = self.sender()
+
+		for s in self.conns:
+			if s == sock:
+				if sock.peer is not None:
+					sock.peer.closeByAccient()
+					sock.close()
+				
+				self.conns.remove(s)
+
+				return 
