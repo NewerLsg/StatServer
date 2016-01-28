@@ -23,3 +23,36 @@ Wed, 27 Jan 2016 20:39:45  send member IDs, num[2]
 Wed, 27 Jan 2016 20:39:45  namelist:[001002], teamname:[HD]
 Wed, 27 Jan 2016 20:39:45  ID[001] added to team [HD].
 Wed, 27 Jan 2016 20:39:45  ID[002] added to team [HD].
+Thu, 28 Jan 2016 09:34:25  Start server.
+Thu, 28 Jan 2016 09:35:04  Start server.
+Thu, 28 Jan 2016 09:35:15  req:[TS00HD].
+Thu, 28 Jan 2016 09:35:15  team request
+Thu, 28 Jan 2016 09:35:15  regist name.
+Thu, 28 Jan 2016 09:35:15  valid name.
+Thu, 28 Jan 2016 09:35:15  resp [ST01]
+Thu, 28 Jan 2016 09:35:15  resp sended,len[5]
+Thu, 28 Jan 2016 09:35:15  req:[TS00LD].
+Thu, 28 Jan 2016 09:35:15  team request
+Thu, 28 Jan 2016 09:35:15  regist name.
+Thu, 28 Jan 2016 09:35:15  valid name.
+Thu, 28 Jan 2016 09:35:15  resp [ST01]
+Thu, 28 Jan 2016 09:35:15  resp sended,len[5]
+Thu, 28 Jan 2016 09:35:15  req:[TS00HD].
+Thu, 28 Jan 2016 09:35:15  team request
+Thu, 28 Jan 2016 09:35:15  regist name.
+Thu, 28 Jan 2016 09:35:15  invalid name.
+Thu, 28 Jan 2016 09:35:15  resp [ST00]
+Thu, 28 Jan 2016 09:35:15  resp sended,len[5]
+Thu, 28 Jan 2016 09:35:15  req:[TS0102001002HD].
+Thu, 28 Jan 2016 09:35:15  team request
+Thu, 28 Jan 2016 09:35:15  send member IDs, num[2]
+Thu, 28 Jan 2016 09:35:15  namelist:[001002], teamname:[HD]
+Thu, 28 Jan 2016 09:35:15  ID[001] added to team [HD].
+Thu, 28 Jan 2016 09:35:15  ID[002] added to team [HD].
+Thu, 28 Jan 2016 09:36:35  req:[TS0103003004005LD].
+Thu, 28 Jan 2016 09:36:35  team request
+Thu, 28 Jan 2016 09:36:35  send member IDs, num[3]
+Thu, 28 Jan 2016 09:36:35  namelist:[003004005], teamname:[LD]
+Thu, 28 Jan 2016 09:36:35  ID[003] added to team [LD].
+Thu, 28 Jan 2016 09:36:35  ID[004] added to team [LD].
+Thu, 28 Jan 2016 09:36:35  ID[005] added to team [LD].

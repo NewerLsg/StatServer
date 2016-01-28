@@ -26,8 +26,15 @@ class ClientSock(QTcpSocket):
 
 			serverLog.debug("resp [%s]",str(respv[0:-1]))
 
-			if respv is not None:
-				writen = self.write(str(respv))
-				serverLog.debug("resp sended,len[%d]",int(writen))
+			self.resp(str(respv))
 
 			continue
+
+	def resp(self, msg):
+
+		if msg == "door open":
+			
+
+		else
+			writen = self.write()
+			serverLog.debug("resp sended,len[%d]",int(writen))

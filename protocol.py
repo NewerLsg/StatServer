@@ -33,7 +33,7 @@ NAME_UNAVAIL	=  '00'		#名字被占用,不可用
 
 TEAM_ID_MSG		=  '01'		#上传对内成员ID列表
 
-MSG_END			=   '\n'
+MSG_END			=  '\n'
 
 def parseMsg(rawMsg):
 	resp = None

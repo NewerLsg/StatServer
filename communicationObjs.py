@@ -18,6 +18,16 @@ class Door(object):
 		self.arg 	 = ID 			#id
 		self.teamIn	 = None			#内部队伍,为空表示没有
 		self.time	 = 1			#队伍的进入时间
+		self.targets = []
+
+class Target(object):
+	"""docstring for Target"""
+	def __init__(self, ID，MID, sock):
+		super(Target, self).__init__()
+		self.ID   = ID
+		self.MID  = MID
+		self.sock = sock 
+		
 
 #成员对象:主要是存储自己的ID以及对应的组
 class Member(object):
