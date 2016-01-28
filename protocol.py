@@ -121,7 +121,7 @@ def parseMenMsg(msgContent):
 	elif subtype == MEN_OPEN_MSG:
 		
 		mid = content[0:g_config['nameSize']] #取得开门者ID
-		did = int(content[g_config['nameSize']])  #门id
+		did = int(content[g_config['nameSize']:])  #门id
 
 		serverLog.debug("door open, door id[%d], mem id[%s]", did, mid)
 
@@ -138,16 +138,21 @@ def parseMenMsg(msgContent):
 				curDoor.time   = time.time()
 				serverLog.debug("get team, team members[%s].", int(m.team.num))
 
-				count = str(int(m.team.num) * int(g_config['targetUint']))
+				count = int(m.team.num) * int(g_config['targetUint'])
+
+				print("targets in door[%d] %d"% (curDoor.id, len(curDoor.targets)))
 
 				for t in curDoor.targets:
 					if count > 0:
 						#点亮
+						print("light up")
 						t.setStat("SM00\n")
 					else:
 						#熄灭
-						t.setStat("SM001\n")	 	
-				 	count -= 1
+						print("light down")
+						t.setStat("SM001\n")
+
+					count -= 1
 
 				
 				return None
@@ -236,14 +241,16 @@ def parseDestMsg(msgContent, sock):
 			serverLog.debug("door don't exist[%d].", did)
 			return 
 
-		for t in g_doorArray[id].targets:
+		for t in g_doorArray[did].targets:
 			if t.id == tid:
 				serverLog.debug("target[%d] already init.", tid)
 				return
 
-		g_doorArray[did].targets.append(Target(tid, g_doorArray[did], sock))
+		target =  Target(tid, g_doorArray[did], sock)
 
-		serverLog.debug("target[%d] init succ.", tid)
+		g_doorArray[did].targets.append(target)
+
+		serverLog.debug("target[%d] in team[%d] init succ.", tid, did)
 
 		return 
 

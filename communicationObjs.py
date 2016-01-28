@@ -15,7 +15,7 @@ class Door(object):
 
 	def __init__(self, ID):
 		super(Door, self).__init__()
-		self.arg 	 = ID 			#id
+		self.id 	 = ID 			#id
 		self.teamIn	 = None			#内部队伍,为空表示没有
 		self.time	 = 1			#队伍的进入时间
 		self.targets = []
@@ -32,7 +32,7 @@ class Target(object):
 	def setStat(self, msg):
 		self.sock.write(msg)
 
-	def closeByAccient():
+	def closeByAccient(self):
 		for t in self.door.targets:
 			if t == self:
 				self.door.targets.remove(t)

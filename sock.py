@@ -27,15 +27,10 @@ class ClientSock(QTcpSocket):
 
 			if respv is not None:
 				serverLog.debug("resp [%s]",str(respv[0:-1]))
+				writen = self.write(str(respv))
+				serverLog.debug("resp sended,len[%d]",int(writen))
 			else:
-				serverLog.debug("resp [None]")
-
-			self.resp(str(respv))
+				serverLog.debug("no need to resp.")
 
 			continue
-
-	def resp(self, msg):
-		
-		if msg is not None:
-			writen = self.write(msg)
-			serverLog.debug("resp sended,len[%d]",int(writen))
+			

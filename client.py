@@ -61,37 +61,31 @@ class Form(QDialog):
         self.socket.write("TS0102001002HD\n")
         self.socket.write("TS0103003004005LD\n")
 
-        #目标物被设计
-        self.socket.write("MS001\n")
-        self.socket.write("MS003\n")
-        self.socket.write("MS005\n")
+        #目标物初始化
+        self.socket.write("MS000101\n") #1号门1号目标
+        self.socket.write("MS000201\n") #1号门2号目标
+        self.socket.write("MS000102\n") #2号门1号目标
+        self.socket.write("MS000202\n") #2号门1号目标
 
         #门请求权限
-        self.socket.write("DS0001\n")
-        self.socket.write("DS0002\n")
-        self.socket.write("DS0003\n")
+        self.socket.write("DS0001\n") #1号门请求权限
+        self.socket.write("DS0002\n") #2号门请求权限
+        self.socket.write("DS0003\n") #3号门请求权限
 
-        self.socket.write("DS000101\n")
+        self.socket.write("MS01001\n")
+        self.socket.write("MS01002\n")
+        self.socket.write("MS01003\n")
 
-        self.socket.write("DS000201\n")
-        
-        self.socket.write("DS000102\n")
 
-        #HD队1号开门,应该是允许
+        #HD队1号开1号门,应该是允许
         self.socket.write("DS0100101\n")
 
-        #LD队1号开门,应该是允许
+        #LD队3号开1号门,应该是允许
         self.socket.write("DS0100301\n")
 
-        #HD队2号开门,应该是允许
+        #HD队2号开2号门,应该是允许
         self.socket.write("DS0100202\n")
 
-
-        self.socket.write("DS010001\n")
-
-        self.socket.write("DS010002\n")
-        
-        self.socket.write("DS010003\n")
 
         self.lineedit.setText("")
 
