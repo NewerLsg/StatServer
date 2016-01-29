@@ -32,7 +32,7 @@ class ScoreRank():
 				m.score =  0
 		self.mlock.acquire()
 
-	#私有方法
+	#私有方法 更新队伍总分，并返回
 	def __updateTeamScore(self, name, score):
 		#防止同一个对中的人同时修改
 		self.tlock.acquire()
@@ -42,11 +42,14 @@ class ScoreRank():
 				t.score += score
 				self.team.sort(key=lambda  x: x.score, reverse = True)
 				self.tlock.release()
-				return	
+				return	t.score
 
 		self.team.append(scoreEnpty(name, score))
 		self.team.sort(key=lambda  x: x.score, reverse = True)
 		self.tlock.release()
+
+		return score 
+
 
 	def getTeamScore(self,name):
 		ret = int(0)
@@ -71,13 +74,12 @@ class ScoreRank():
 				m.score += score
 				self.mem.sort(key=lambda  x: x.score, reverse = True)
 				self.mlock.release()
-				self.__updateTeamScore(mem.team.name, score)
-				return
-			
+				return self.__updateTeamScore(mem.team.name, score)
+				 	
 		self.mem.append(scoreEnpty(mem.id, score))
 		self.mem.sort(key=lambda  x: x.score, reverse = True)
 		self.mlock.release()
-		self.__updateTeamScore(mem.team.name, score)
+		return self.__updateTeamScore(mem.team.name, score)
 
 class scoreEnpty():
 	"""docstring for scoreEnpty"""

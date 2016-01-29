@@ -10,6 +10,7 @@ from log import *
 	门、成员、组队靶
 	(注：可以认为目标物帮助成员与服务器通信)
 """
+
 class Door(object):
 	"""docstring for Door"""
 
@@ -18,7 +19,7 @@ class Door(object):
 		self.id 	 = ID 			#id
 		self.teamIn	 = None			#内部队伍,为空表示没有
 		self.time	 = 1			#队伍的进入时间
-		self.targets = []
+		self.targets = {}
 
 class Target(object):
 	"""docstring for Target"""
@@ -30,14 +31,19 @@ class Target(object):
 		self.sock.peer = self
 
 	def setStat(self, msg):
+		print(msg)
 		self.sock.write(msg)
 
+	def reset(self,door,sock):
+		self.sock =  sock
+		self.sock.peer = self
+
 	def closeByAccient(self):
-		for t in self.door.targets:
-			if t == self:
-				self.door.targets.remove(t)
-			return
-		
+		try:
+			del self.door.targets[self.id]
+		except KeyError:
+			serverLog.debug("target[%s] not in door[%s]'s targets dict.",self.id, self.door.id)
+					
 
 #成员对象:主要是存储自己的ID以及对应的组
 class Member(object):
@@ -69,12 +75,16 @@ class TeamObj(object):
 
 	def addMem(self, MID):
 		self.num += 1
-		for m in g_memArray:
-			if m.id == MID:
-				m.reset(self)
-				return
+
+		try:
+			mem =  g_memArray[MID]
+			mem.reset(self)
+		except KeyError:
+			#不存在则新建
+			newMem 	= Member(MID, self)
+			g_memArray[MID] = newMem
 
 		serverLog.debug("ID[%s] added to team [%s].", MID, self.name)
 		
-		newMem 	= Member(MID, self)
-		g_memArray.append(newMem)  
+		
+		 

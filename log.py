@@ -13,7 +13,7 @@ serverLog.setLevel(logging.DEBUG)
 handler = logging.handlers.RotatingFileHandler(
               LOG_FILENAME, maxBytes=1024*1024, backupCount=5)
 
-fileFormat = logging.Formatter('%(asctime)s  %(message)s','%a, %d %b %Y %H:%M:%S')
+fileFormat = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s','%a, %d %b %Y %H:%M:%S')
 
 handler.setFormatter(fileFormat)
 

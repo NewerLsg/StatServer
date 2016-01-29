@@ -1,105 +1,1061 @@
-Thu, 28 Jan 2016 22:57:01  Start server.
-Thu, 28 Jan 2016 22:57:07  req:[TS00HD].
-Thu, 28 Jan 2016 22:57:07  team request
-Thu, 28 Jan 2016 22:57:07  regist name.
-Thu, 28 Jan 2016 22:57:07  valid name.
-Thu, 28 Jan 2016 22:57:07  resp [ST01]
-Thu, 28 Jan 2016 22:57:07  resp sended,len[5]
-Thu, 28 Jan 2016 22:57:07  req:[TS00LD].
-Thu, 28 Jan 2016 22:57:07  team request
-Thu, 28 Jan 2016 22:57:07  regist name.
-Thu, 28 Jan 2016 22:57:07  valid name.
-Thu, 28 Jan 2016 22:57:07  resp [ST01]
-Thu, 28 Jan 2016 22:57:07  resp sended,len[5]
-Thu, 28 Jan 2016 22:57:07  req:[TS00HD].
-Thu, 28 Jan 2016 22:57:07  team request
-Thu, 28 Jan 2016 22:57:07  regist name.
-Thu, 28 Jan 2016 22:57:07  invalid name.
-Thu, 28 Jan 2016 22:57:07  resp [ST00]
-Thu, 28 Jan 2016 22:57:07  resp sended,len[5]
-Thu, 28 Jan 2016 22:57:07  req:[TS0102001002HD].
-Thu, 28 Jan 2016 22:57:07  team request
-Thu, 28 Jan 2016 22:57:07  send member IDs, num[2]
-Thu, 28 Jan 2016 22:57:07  namelist:[001002], teamname:[HD]
-Thu, 28 Jan 2016 22:57:07  ID[001] added to team [HD].
-Thu, 28 Jan 2016 22:57:07  ID[002] added to team [HD].
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[TS0103003004005LD].
-Thu, 28 Jan 2016 22:57:07  team request
-Thu, 28 Jan 2016 22:57:07  send member IDs, num[3]
-Thu, 28 Jan 2016 22:57:07  namelist:[003004005], teamname:[LD]
-Thu, 28 Jan 2016 22:57:07  ID[003] added to team [LD].
-Thu, 28 Jan 2016 22:57:07  ID[004] added to team [LD].
-Thu, 28 Jan 2016 22:57:07  ID[005] added to team [LD].
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[MS000101].
-Thu, 28 Jan 2016 22:57:07  msg from MS
-Thu, 28 Jan 2016 22:57:07  target init.
-Thu, 28 Jan 2016 22:57:07  target[1] in team[1] init succ.
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[MS000201].
-Thu, 28 Jan 2016 22:57:07  msg from MS
-Thu, 28 Jan 2016 22:57:07  target init.
-Thu, 28 Jan 2016 22:57:07  target[2] in team[1] init succ.
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[MS000102].
-Thu, 28 Jan 2016 22:57:07  msg from MS
-Thu, 28 Jan 2016 22:57:07  target init.
-Thu, 28 Jan 2016 22:57:07  target[1] in team[2] init succ.
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[MS000202].
-Thu, 28 Jan 2016 22:57:07  msg from MS
-Thu, 28 Jan 2016 22:57:07  target init.
-Thu, 28 Jan 2016 22:57:07  target[2] in team[2] init succ.
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[DS0001].
-Thu, 28 Jan 2016 22:57:07  type:[DS]
-Thu, 28 Jan 2016 22:57:07  [1] request open authority.
-Thu, 28 Jan 2016 22:57:07  prefix condition matched.
-Thu, 28 Jan 2016 22:57:07  first door open
-Thu, 28 Jan 2016 22:57:07  resp [SD01]
-Thu, 28 Jan 2016 22:57:07  resp sended,len[5]
-Thu, 28 Jan 2016 22:57:07  req:[DS0002].
-Thu, 28 Jan 2016 22:57:07  type:[DS]
-Thu, 28 Jan 2016 22:57:07  [2] request open authority.
-Thu, 28 Jan 2016 22:57:07  prefix condition matched.
-Thu, 28 Jan 2016 22:57:07  condition not matched
-Thu, 28 Jan 2016 22:57:07  resp [SD00]
-Thu, 28 Jan 2016 22:57:07  resp sended,len[5]
-Thu, 28 Jan 2016 22:57:07  req:[DS0003].
-Thu, 28 Jan 2016 22:57:07  type:[DS]
-Thu, 28 Jan 2016 22:57:07  [3] request open authority.
-Thu, 28 Jan 2016 22:57:07  prefix condition matched.
-Thu, 28 Jan 2016 22:57:07  condition not matched
-Thu, 28 Jan 2016 22:57:07  resp [SD00]
-Thu, 28 Jan 2016 22:57:07  resp sended,len[5]
-Thu, 28 Jan 2016 22:57:07  req:[MS01001].
-Thu, 28 Jan 2016 22:57:07  msg from MS
-Thu, 28 Jan 2016 22:57:07  target shooted.
-Thu, 28 Jan 2016 22:57:07  ID:[001] get [10] score!
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[MS01002].
-Thu, 28 Jan 2016 22:57:07  msg from MS
-Thu, 28 Jan 2016 22:57:07  target shooted.
-Thu, 28 Jan 2016 22:57:07  ID:[002] get [10] score!
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[MS01003].
-Thu, 28 Jan 2016 22:57:07  msg from MS
-Thu, 28 Jan 2016 22:57:07  target shooted.
-Thu, 28 Jan 2016 22:57:07  ID:[003] get [10] score!
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[DS0100101].
-Thu, 28 Jan 2016 22:57:07  type:[DS]
-Thu, 28 Jan 2016 22:57:07  door open, door id[1], mem id[001]
-Thu, 28 Jan 2016 22:57:07  get team, team members[2].
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[DS0100301].
-Thu, 28 Jan 2016 22:57:07  type:[DS]
-Thu, 28 Jan 2016 22:57:07  door open, door id[1], mem id[003]
-Thu, 28 Jan 2016 22:57:07  get team, team members[3].
-Thu, 28 Jan 2016 22:57:07  no need to resp.
-Thu, 28 Jan 2016 22:57:07  req:[DS0100202].
-Thu, 28 Jan 2016 22:57:07  type:[DS]
-Thu, 28 Jan 2016 22:57:07  door open, door id[2], mem id[002]
-Thu, 28 Jan 2016 22:57:07  get team, team members[2].
-Thu, 28 Jan 2016 22:57:07  no need to resp.
+Fri, 29 Jan 2016 15:41:24 main.py[line:53] DEBUG Start server.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:172] DEBUG valid name.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:29] DEBUG resp [ST01]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:172] DEBUG valid name.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:29] DEBUG resp [ST01]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:41:27 communicationobjs.py[line:87] DEBUG ID[001] added to team [HD].
+Fri, 29 Jan 2016 15:41:27 communicationobjs.py[line:87] DEBUG ID[002] added to team [HD].
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:41:27 communicationobjs.py[line:87] DEBUG ID[003] added to team [LD].
+Fri, 29 Jan 2016 15:41:27 communicationobjs.py[line:87] DEBUG ID[004] added to team [LD].
+Fri, 29 Jan 2016 15:41:27 communicationobjs.py[line:87] DEBUG ID[005] added to team [LD].
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:248] DEBUG target[01] in team[1] init succ.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:248] DEBUG target[02] in team[1] init succ.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:248] DEBUG target[01] in team[2] init succ.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:248] DEBUG target[02] in team[2] init succ.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:97] DEBUG first door open
+Fri, 29 Jan 2016 15:41:27 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:27 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:27 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:27 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:27 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:27 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:27 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:27 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:241] DEBUG target[01] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:241] DEBUG target[02] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:241] DEBUG target[01] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:241] DEBUG target[02] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:28 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:28 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:105] DEBUG score matched
+Fri, 29 Jan 2016 15:41:28 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:28 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:28 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:28 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:28 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:28 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[01] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[02] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[01] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[02] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:105] DEBUG score matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[01] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[02] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[01] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[02] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:105] DEBUG score matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[01] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[02] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[01] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[02] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:105] DEBUG score matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[01] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[02] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[01] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:241] DEBUG target[02] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:105] DEBUG score matched
+Fri, 29 Jan 2016 15:41:29 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:29 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:29 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:29 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:241] DEBUG target[01] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:241] DEBUG target[02] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:241] DEBUG target[01] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:241] DEBUG target[02] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:35 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:35 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:105] DEBUG score matched
+Fri, 29 Jan 2016 15:41:35 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:35 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:35 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:35 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:35 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:35 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:241] DEBUG target[01] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:241] DEBUG target[02] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:241] DEBUG target[01] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:241] DEBUG target[02] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:105] DEBUG score matched
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:36 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:36 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:36 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:241] DEBUG target[01] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:241] DEBUG target[02] in team[1] already exist.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:241] DEBUG target[01] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:241] DEBUG target[02] in team[2] already exist.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:105] DEBUG score matched
+Fri, 29 Jan 2016 15:41:36 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:36 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:36 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:41:36 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:41:36 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:41:36 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:42 main.py[line:53] DEBUG Start server.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:172] DEBUG valid name.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:29] DEBUG resp [ST01]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:172] DEBUG valid name.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:29] DEBUG resp [ST01]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:46:52 communicationobjs.py[line:87] DEBUG ID[001] added to team [HD].
+Fri, 29 Jan 2016 15:46:52 communicationobjs.py[line:87] DEBUG ID[002] added to team [HD].
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:46:52 communicationobjs.py[line:87] DEBUG ID[003] added to team [LD].
+Fri, 29 Jan 2016 15:46:52 communicationobjs.py[line:87] DEBUG ID[004] added to team [LD].
+Fri, 29 Jan 2016 15:46:52 communicationobjs.py[line:87] DEBUG ID[005] added to team [LD].
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:248] DEBUG target[01] in team[1] init succ.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:248] DEBUG target[02] in team[1] init succ.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:248] DEBUG target[01] in team[2] init succ.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:248] DEBUG target[02] in team[2] init succ.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:97] DEBUG first door open
+Fri, 29 Jan 2016 15:46:52 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:46:52 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:46:52 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:46:52 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:46:52 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:46:52 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:46:52 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:46:52 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[TS00LD].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[TS00HD].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:161] DEBUG regist name.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:165] DEBUG invalid name.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:29] DEBUG resp [ST00]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[TS0102001002HD].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:180] DEBUG send member IDs, num[2]
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:198] DEBUG namelist:[001002], teamname:[HD]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[TS0103003004005LD].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:180] DEBUG send member IDs, num[3]
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:198] DEBUG namelist:[003004005], teamname:[LD]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[MS000101].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:241] DEBUG target[01] in team[1] already exist.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[MS000201].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:241] DEBUG target[02] in team[1] already exist.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[MS000102].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:241] DEBUG target[01] in team[2] already exist.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[MS000202].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:226] DEBUG target init.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:241] DEBUG target[02] in team[2] already exist.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[DS0001].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:83] DEBUG [1] request open authority.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:46:54 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[DS0002].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:83] DEBUG [2] request open authority.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:108] DEBUG condition not matched
+Fri, 29 Jan 2016 15:46:54 sock.py[line:29] DEBUG resp [SD00]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[DS0003].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:83] DEBUG [3] request open authority.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:93] DEBUG prefix condition matched.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:105] DEBUG score matched
+Fri, 29 Jan 2016 15:46:54 sock.py[line:29] DEBUG resp [SD01]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:31] DEBUG resp sended,len[5]
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[MS01001].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:46:54 communicationobjs.py[line:62] DEBUG ID:[001] get [10] score!
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[MS01002].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:46:54 communicationobjs.py[line:62] DEBUG ID:[002] get [10] score!
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[MS01003].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:219] DEBUG msg from MS
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:256] DEBUG target shooted.
+Fri, 29 Jan 2016 15:46:54 communicationobjs.py[line:62] DEBUG ID:[003] get [10] score!
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[DS0100101].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:124] DEBUG door open, door id[1], mem id[001]
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[DS0100301].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:124] DEBUG door open, door id[1], mem id[003]
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:135] DEBUG get team, team members[3], [15] targets will be light up.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:23] DEBUG req:[DS0100202].
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:124] DEBUG door open, door id[2], mem id[002]
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:135] DEBUG get team, team members[2], [10] targets will be light up.
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:140] DEBUG [02] light up
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:140] DEBUG [01] light up
+Fri, 29 Jan 2016 15:46:54 protocol.py[line:149] DEBUG not enough targets.
+Fri, 29 Jan 2016 15:46:54 sock.py[line:33] DEBUG no need to resp.

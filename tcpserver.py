@@ -15,7 +15,7 @@ class ServerThread(QThread):
 	"""docstring for ServerThread"""
 	def __init__(self , port, parent=None):
 		super(ServerThread, self).__init__(parent)
-		self.port = port
+		self.port 	= port
 		self.parent = parent
 
 	def run(self):
@@ -26,10 +26,11 @@ class ServerThread(QThread):
 		self.exec_()
 
 	def shutDown(self):
-		self.tcpServer.cleanWork()
+		self.tcpServer.cleanAllSock()
 		self.tcpServer.close()
 
 
+"""
 #通信线程:接收通信套接字初始化TcpSocket,在线程中完成Tcpsocket的读写	
 class WorkThread(QThread):
 	def __init__(self, descriptor, parent=None):
@@ -52,8 +53,9 @@ class WorkThread(QThread):
 	def clear(self):
 		print("close by main thread")
 		self.sock.close()
-		self.quit()
-		
+		self.quit()		
+"""
+
 
 #Tcpserver的包装:实现连接套接字的线程处理:包括初始化、退出管理
 class  TcpServer(QTcpServer):
@@ -61,10 +63,14 @@ class  TcpServer(QTcpServer):
 
 	def __init__(self, port, parent=None):
 		super( TcpServer, self).__init__(parent)
-		self.listen(QHostAddress("0.0.0.0"),port)
-		self.setMaxPendingConnections(MAX_CONNECTIONS)
 		self.conns = [] 	
 
+		self.listen(QHostAddress("0.0.0.0"),port)
+		self.setMaxPendingConnections(MAX_CONNECTIONS)
+
+		self.connect(self, SIGNAL("error()"), self.errorProcess)
+
+		
 	def incomingConnection(self, descriptor):
 		sock = ClientSock(descriptor)
 
@@ -73,30 +79,53 @@ class  TcpServer(QTcpServer):
 
 		self.conns.append(sock)
 
+		"""
 		#暂时去掉这里的多线程
 		#work = WorkThread(descriptor,self)
 		#self.connect(work, SIGNAL("quitThread()"), self.removeWork)
 		#self.conns.append(work)		#1.为了保存管理;2.如为局部变量会造成线程闪退
 		#work.start()
-	
+		"""
+
+	"""
+	#not used
 	def removeWork(self):
 		work = self.sender()
 		for w in self.conns:
 			if w == work:
 				w.quit()
 				self.conns.remove(w)
-
+	#not used
 	def cleanWork(self):
 		for w in self.conns:
 			print("removed")
 			w.clear()
 			self.conns.remove(w)
+	"""
+
+	def errorProcess(self):
+		print("error occur.")
+		self.cleanAllSock()
+		self.close()
+
+
+	def cleanAllSock(self):
+		print("clear all sock.")
+		for sock in self.conns:
+			if sock.peer is not None:
+				sock.peer.closeByAccient()
+
+			sock.close()
+
 
 	def clearSock(self):
 		sock = self.sender()
 
+		print("clear sock");
+
 		for s in self.conns:
 			if s == sock:
+				print("sock found.");
 				if sock.peer is not None:
 					sock.peer.closeByAccient()
 					sock.close()

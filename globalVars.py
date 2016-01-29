@@ -8,8 +8,8 @@ memRLock   = RLock()
 teamRLock  = RLock()
 
 g_doorArray = []   #门设备
-g_memArray 	= []   #成员
-g_TeamArray = []   #队伍
+g_memArray 	= {}   #成员
+g_TeamArray = {}   #队伍
 
 g_scoreRank = ScoreRank()
 
