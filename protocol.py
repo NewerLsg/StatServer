@@ -56,10 +56,7 @@ def parseMsg(rawMsg, sock):
 		return None
 
 	msgType 	= rawMsg[0:MSGTYEP_LEN]
-	msgContent 	= rawMsg[MSGTYEP_LEN:-1]
-
-	print("%s" % msgType)
-	print("%s" % msgContent)
+	msgContent 	= rawMsg[MSGTYEP_LEN:]
 
 	if msgType == MEN_TO_SERVER:
 		return  parseMenMsg(msgContent)
@@ -69,6 +66,10 @@ def parseMsg(rawMsg, sock):
 
 	elif msgType == DEST_TO_SERVER:
 		return  parseDestMsg(msgContent, sock)
+		
+	else:
+		serverLog.debug("invalid msg type.")
+		return 
 
 
 def parseMenMsg(msgContent):
@@ -78,7 +79,7 @@ def parseMenMsg(msgContent):
 
 	#开门权限
 	if subtype == MEN_AUTH_MSG:
-		did = int(content[0:])  
+		did = int(content)  
 
 		serverLog.debug("[%d] request open authority.",did)
 
@@ -225,9 +226,7 @@ def parseDestMsg(msgContent, sock):
 	if subtype == DEST_INIT:
 		serverLog.debug("target init.")
 
-		if len(content) != 4:
-			serverLog.debug("invalid req.")
-			return 
+		serverLog.debug("content[%s],len[%d]", content , len(content))
 
 		tid = content[0:2]
 		did = int(content[2:])
@@ -237,7 +236,7 @@ def parseDestMsg(msgContent, sock):
 
 			if tid in curDoor.targets.keys(): #门内目标物ID已存在
 				target = curDoor.targets[tid];
-				#target.reset(curDoor, sock)
+				target.reset(curDoor, sock)
 				serverLog.debug("target[%s] in team[%d] already exist.", tid, did)
 
 			else:							#目标物ID不存在需要初始化
@@ -254,15 +253,13 @@ def parseDestMsg(msgContent, sock):
 	#被击中
 	elif subtype == DEST_SHOOTED:
 		serverLog.debug("target shooted.")
-
-		if len(content) != int(g_config['nameSize']) :
-			serverLog.debug("invalid MID:[%s], len don't matched", content)
-
+		
 		try:
 			mem = g_memArray[content]
+			serverLog.debug("update MID[%s] score.", str(mem))
 			teamTotalScore = mem.addScore(g_config['scoreUint']) 
 
 		except KeyError:
-			serverLog.debug("MID[%d] don't exist.", content)
+			serverLog.debug("MID[%s] don't exist.", content)
 
 	return None

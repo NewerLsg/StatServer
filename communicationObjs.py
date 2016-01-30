@@ -25,10 +25,10 @@ class Target(object):
 	"""docstring for Target"""
 	def __init__(self, ID, door, sock):
 		super(Target, self).__init__()
-		self.id   = ID
-		self.door = door
-		self.sock = sock 
-		self.sock.peer = self
+		self.id   	= ID
+		self.door 	= door
+		self.sock 	= sock
+		sock.src 	= self #通讯源,设备源
 
 	def setStat(self, msg):
 		print(msg)
@@ -36,13 +36,14 @@ class Target(object):
 
 	def reset(self,door,sock):
 		self.sock =  sock
-		self.sock.peer = self
+		self.sock.src = self
 
 	def closeByAccient(self):
 		try:
 			del self.door.targets[self.id]
+			serverLog.debug("target[%s] del from door[%d].", self.id, int(self.door.id))
 		except KeyError:
-			serverLog.debug("target[%s] not in door[%s]'s targets dict.",self.id, self.door.id)
+			serverLog.debug("target[%s] not in door[%d]'s targets dict.", self.id, str(self.door.id))
 					
 
 #成员对象:主要是存储自己的ID以及对应的组

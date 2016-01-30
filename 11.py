@@ -55,33 +55,8 @@ class Form(QDialog):
         self.socket.connectToHost("localhost", PORT)
 
     def issueRequest(self):
-        self.socket.write("TS00HD\n")
-        self.socket.write("TS00LD\n")
-        self.socket.write("TS00HD\n")
-        self.socket.write("TS0102001002HD\n")
-        self.socket.write("TS0103003004005LD\n")
- 
-        #门请求权限
-        self.socket.write("DS0001\n") #1号门请求权限
-        self.socket.write("DS0002\n") #2号门请求权限
-        self.socket.write("DS0003\n") #3号门请求权限
-
-        self.socket.write("MS01001\n")
-        self.socket.write("MS01002\n")
-        self.socket.write("MS01003\n")
-
-
-        #HD队1号开1号门,应该是允许
-        self.socket.write("DS0100101\n")
-
-         #HD队2号开2号门,应该是允许
-        self.socket.write("DS0100202\n")
-
-        #LD队3号开1号门,应该是允许
-        self.socket.write("DS0100301\n")
-
-
-
+        #目标物初始化
+        self.socket.write("MS000301\n") #1号门1号目标
 
         self.lineedit.setText("")
 

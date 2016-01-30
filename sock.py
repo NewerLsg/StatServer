@@ -9,28 +9,41 @@ from log import *
 class ClientSock(QTcpSocket):
 	"""docstring for ClientSock"""
 
-	def __init__(self, descriptor,parent=None):
+	def __init__(self, descriptor, parent=None):
 		super(ClientSock, self).__init__(parent)
 		self.setSocketDescriptor(descriptor)
 		self.readyRead.connect(self.recv)
-		self.peer = None
+		self.src = None
 
 	def recv(self):
 		while self.canReadLine():
-			#readline 返回的是bytes对象,需要decode转化为str
-			rawMsg = self.readLine(128) 
+			#readline 返回的是bytes对象,需要decode转化为str并去掉后面的空格以及换行
+			rawMsg = self.readLine(128).decode().rstrip()
 
-			serverLog.debug("req:[%s].",rawMsg.decode()[0:-1])
+			print("rep [%s], len[%d]" % (rawMsg, len(rawMsg)))
+
+			serverLog.debug("req:[%s],len[%d]",rawMsg, len(rawMsg))
 
 			#respv是回复信息,update
-			respv = parseMsg(rawMsg.decode(), self)
-
+			respv = parseMsg(rawMsg, self)
+			
 			if respv is not None:
-				serverLog.debug("resp [%s]",str(respv[0:-1]))
+				serverLog.debug("resp [%s], len[%d](blank included)", respv.rstrip(), len(respv))
+
+				print("respv[%s], len[%d]" %(respv.rstrip(), len(respv.rstrip())))
+				
 				writen = self.write(str(respv))
+
 				serverLog.debug("resp sended,len[%d]",int(writen))
 			else:
+
 				serverLog.debug("no need to resp.")
 
 			continue
-			
+
+	def clearSock(self):
+		if self.src is not None:
+			self.src.closeByAccient()
+			del self.src 
+
+		self.close()

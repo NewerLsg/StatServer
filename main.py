@@ -16,6 +16,8 @@ from tableItem import *
 from ui.mainWindow import *
 from log import *
 
+from sock import *
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -47,15 +49,20 @@ class Main(QMainWindow):
 		self.ui.StopBtn.setEnabled(True)
 
 		self.tcpServer = ServerThread(port,self)
+
 		self.tcpServer.start()
+
 		self.timer.start(1000)
 
 		serverLog.debug("Start server.")
 		
 	def stopServer(self):
 		self.emit(SIGNAL("ShutDown()"))
+
 		self.tcpServer.quit()
+
 		self.timer.stop();
+
 		self.ui.StartBtn.setEnabled(True)
 		self.ui.PortTxt.setEnabled(True)
 		self.ui.StopBtn.setEnabled(False)
@@ -63,6 +70,7 @@ class Main(QMainWindow):
 		serverLog.debug("Stop server.")
 
 	def updateRank(self):
+	
 		teamRow = len(g_scoreRank.team)
 		self.ui.TeamRankTb.setRowCount(teamRow)
 
@@ -105,5 +113,4 @@ class Main(QMainWindow):
 app = QApplication(sys.argv)
 main = Main()
 main.show()
-
 app.exec_()
