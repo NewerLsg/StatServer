@@ -4,12 +4,13 @@
 from threading import  RLock
 from scoreRank import *
 
-memRLock   = RLock()
-teamRLock  = RLock()
+memRLock   	 = RLock()
+teamRLock 	 = RLock()
 
 g_doorArray = []   #门设备
 g_memArray 	= {}   #成员
 g_TeamArray = {}   #队伍
+g_teamNum = 1
 
 g_scoreRank = ScoreRank()
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from PyQt4.QtCore import *
-from globalVars import *
+import globalVars 
 from communicationObjs import *
 from log import *
 
@@ -84,12 +84,12 @@ def parseMenMsg(msgContent):
 		serverLog.debug("[%d] request open authority.",did)
 
 		try:
-			curDoor = g_doorArray[did]
+			curDoor = globalVars.g_doorArray[did]
 			curTime = time.time()
 	
 			#门内无队伍:门内队伍过关 or 门内队伍挑战超时
 			if curDoor.teamIn is None \
-					or curDoor.time < curTime - g_config['timeLimit']:	
+					or curDoor.time < curTime - globalVars.g_config['timeLimit']:	
 
 				serverLog.debug("prefix condition matched.")
 
@@ -100,8 +100,8 @@ def parseMenMsg(msgContent):
 					return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
 
 				#其他门--前面门内有队伍且达到积分要求
-				elif  g_doorArray[did - 1].teamIn is not None \
-						and g_scoreRank.getTeamScore(g_doorArray[did - 1].teamIn.name)  > 0:
+				elif  globalVars.g_doorArray[did - 1].teamIn is not None \
+						and globalVars.g_scoreRank.getTeamScore(globalVars.g_doorArray[did - 1].teamIn.ID)  > 0:
 
 					serverLog.debug("score matched")		
 					return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
@@ -110,28 +110,28 @@ def parseMenMsg(msgContent):
 			return SERVER_TO_MEN + AUTH_DENY + MSG_END
 
 		except IndexError: 
-			serverLog.debug("invalid door id [%d].", did)
+			serverLog.debug("invalid door ID [%d].", did)
 			return SERVER_TO_MEN + AUTH_DENY + MSG_END 
 
 	#开门
 	elif subtype == MEN_OPEN_MSG:
 		
-		mid = content[0:g_config['nameSize']] 		#开门者ID
-		did = int(content[g_config['nameSize']:])  	#门id
+		mid = content[0:globalVars.g_config['nameSize']] 		#开门者ID
+		did = int(content[globalVars.g_config['nameSize']:])  	#门id
 
 		try:
-			curDoor = g_doorArray[did]		#门
-			m  		= g_memArray[mid] 		#成员
-			serverLog.debug("door open, door id[%d], mem id[%s]", did, mid)
+			curDoor = globalVars.g_doorArray[did]		#门
+			m  		= globalVars.g_memArray[mid] 		#成员
+			serverLog.debug("door open, door ID[%d], mem ID[%s]", did, mid)
 
 		except (IndexError,KeyError):
-			serverLog.debug("invalid msg, door id[%d], mem id[%s]", did, mid)
+			serverLog.debug("invalid msg, door ID[%d], mem ID[%s]", did, mid)
 			return None
 
 		curDoor.teamIn 	= m.team 		#当前门的队伍
 		m.team.curDoor 	= curDoor		#当前队伍所在的门
 		curDoor.time   	= time.time()
-		count 			= int(m.team.num) * int(g_config['targetUint'])
+		count 			= int(m.team.num) * int(globalVars.g_config['targetUint'])
 
 		serverLog.debug("get team, team members[%s], [%d] targets will be light up.", int(m.team.num), count)
 
@@ -159,9 +159,11 @@ def parseTeamMsg(msgContent):
 
 	#名字
 	if subtype == TEAM_NAEM_MSG:
+		pass
+		"""
 		serverLog.debug("regist name.")
 
-		if content in g_TeamArray.keys():
+		if content in globalVars.g_TeamArray.keys():
 			#已存在
 			serverLog.debug("invalid name.")
 			return SERVER_TO_TEAM + NAME_UNAVAIL + MSG_END
@@ -169,10 +171,10 @@ def parseTeamMsg(msgContent):
 		else:
 			#创建新的队伍
 			newTeam = TeamObj(content)
-			g_TeamArray[content] = newTeam
+			globalVars.g_TeamArray[content] = newTeam
 			serverLog.debug("valid name.")
 			return SERVER_TO_TEAM + NAME_AVAIL + MSG_END
-
+		"""
 	#队员ID列表
 	elif subtype == TEAM_ID_MSG :
 
@@ -186,7 +188,7 @@ def parseTeamMsg(msgContent):
 		#队名列表的结束位置
 		#例：02ABHONGDUI -- 02为个数, A、B为ID，HONGDUI为队名
 		#num = 2，则namelistEnd为 2 + 2 * 1 = 4，那在content位置5即为名字列表的结束 
-		nameListEnd = 2 + num * g_config['nameSize']  
+		nameListEnd = 2 + num * globalVars.g_config['nameSize']  
 
 		#必须处理不合格的报文
 		if len(content) < nameListEnd:
@@ -200,16 +202,18 @@ def parseTeamMsg(msgContent):
 
 		#将ID加入队伍
 		try:
-			team = g_TeamArray[teamName]  
+			newTeam = TeamObj(teamName)
 
-			if team.reg ==  0:	#当前队伍没有发送名字
+			globalVars.g_TeamArray[newTeam.ID] = newTeam
+
+			if newTeam.reg ==  0:	#当前队伍没有发送名字
 				pos = int(0)
 				for x in range(0, num):
-					end = int(pos + g_config['nameSize'])
-					team.addMem(namelist[pos:end])
-					pos += g_config['nameSize'] 
+					end = int(pos + globalVars.g_config['nameSize'])
+					newTeam.addMem(namelist[pos:end])
+					pos += globalVars.g_config['nameSize'] 
 
-				team.reg = 1
+				newTeam.reg = 1
 
 		except KeyError:
 			serverLog.debug("team[%s] not exist", teamName)
@@ -232,7 +236,7 @@ def parseDestMsg(msgContent, sock):
 		did = int(content[2:])
 
 		try:
-			curDoor = g_doorArray[did]
+			curDoor = globalVars.g_doorArray[did]
 
 			if tid in curDoor.targets.keys(): #门内目标物ID已存在
 				target = curDoor.targets[tid];
@@ -240,14 +244,14 @@ def parseDestMsg(msgContent, sock):
 				serverLog.debug("target[%s] in team[%d] already exist.", tid, did)
 
 			else:							#目标物ID不存在需要初始化
-				target =  Target(tid, g_doorArray[did], sock)
+				target =  Target(tid, globalVars.g_doorArray[did], sock)
 				curDoor.targets[tid] = target
 
 				print("target{%s} in  door[%d]"% (str(curDoor.targets), did))
 				serverLog.debug("target[%s] in team[%d] init succ.", tid, did)	
 
 		except IndexError:			#门不存在
-			serverLog.debug("invalid door id [%d].", did)
+			serverLog.debug("invalid door ID [%d].", did)
 			return None	
 
 	#被击中
@@ -255,9 +259,11 @@ def parseDestMsg(msgContent, sock):
 		serverLog.debug("target shooted.")
 		
 		try:
-			mem = g_memArray[content]
+			mem = globalVars.g_memArray[content]
 			serverLog.debug("update MID[%s] score.", str(mem))
-			teamTotalScore = mem.addScore(g_config['scoreUint']) 
+			teamTotalScore = mem.addScore(globalVars.g_config['scoreUint']) 
+			serverLog.debug("team name[%s] ,ID[%s], score[%d]", 
+				str(mem.team.name),str(mem.team.ID),teamTotalScore)
 
 		except KeyError:
 			serverLog.debug("MID[%s] don't exist.", content)

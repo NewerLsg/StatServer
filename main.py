@@ -70,7 +70,8 @@ class Main(QMainWindow):
 		serverLog.debug("Stop server.")
 
 	def updateRank(self):
-	
+		pass
+		
 		teamRow = len(g_scoreRank.team)
 		self.ui.TeamRankTb.setRowCount(teamRow)
 
@@ -86,15 +87,16 @@ class Main(QMainWindow):
 			self.ui.TeamRankTb.setItem(i,1,TableItem(str(t.name)))
 			self.ui.TeamRankTb.setItem(i,2,TableItem(str(t.score)))	
 			i += 1
-
+		
 		i = int(0)
 		mem = g_scoreRank.getMemScoreList()
 
-		for t in mem:
+		for m in mem:
 			self.ui.MemRankTbl.setItem(i,0,TableItem(str(i + 1)))
-			self.ui.MemRankTbl.setItem(i,1,TableItem(str(t.name)))
-			self.ui.MemRankTbl.setItem(i,2,TableItem(str(t.score)))	
+			self.ui.MemRankTbl.setItem(i,1,TableItem(str(m.ID + "(" + m.teamname + ")")))
+			self.ui.MemRankTbl.setItem(i,2,TableItem(str(m.score)))	
 			i += 1
+		
 
 	def showConfig(self):
 		self.configWindow =  ConfigDialog()
