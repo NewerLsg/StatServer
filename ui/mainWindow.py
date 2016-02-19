@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Fri Feb 19 19:54:17 2016
-#      by: PyQt4 UI code generator 4.11.3
+# Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +25,8 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(969, 534)
+        MainWindow.resize(892, 534)
+        MainWindow.setMinimumSize(QtCore.QSize(892, 534))
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.centralwidget)
@@ -34,8 +34,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
         self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
         self.verticalLayout = QtGui.QVBoxLayout()
+        self.verticalLayout.setSizeConstraint(QtGui.QLayout.SetMinAndMaxSize)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.groupBox = QtGui.QGroupBox(self.centralwidget)
+        self.groupBox.setMaximumSize(QtCore.QSize(250, 110))
         self.groupBox.setTitle(_fromUtf8(""))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.groupBox)
@@ -70,16 +72,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
         self.verticalLayout.addWidget(self.groupBox)
         self.TipTextArea = QtGui.QTextBrowser(self.centralwidget)
+        self.TipTextArea.setMaximumSize(QtCore.QSize(250, 16000))
         self.TipTextArea.setObjectName(_fromUtf8("TipTextArea"))
         self.verticalLayout.addWidget(self.TipTextArea)
         self.horizontalLayout_3.addLayout(self.verticalLayout)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem1)
         self.TeamRankTbl = QtGui.QTableWidget(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily(_fromUtf8("宋体"))
-        font.setPointSize(12)
-        self.TeamRankTbl.setFont(font)
+        self.TeamRankTbl.horizontalHeader().setResizeMode(QtGui.QHeaderView.Stretch)
+        self.TeamRankTbl.setAutoFillBackground(False)
+        self.TeamRankTbl.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.TeamRankTbl.setAutoScroll(False)
         self.TeamRankTbl.setObjectName(_fromUtf8("TeamRankTbl"))
         self.TeamRankTbl.setColumnCount(3)
         self.TeamRankTbl.setRowCount(0)
@@ -92,14 +95,13 @@ class Ui_MainWindow(object):
         item = QtGui.QTableWidgetItem()
         item.setTextAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter|QtCore.Qt.AlignCenter)
         self.TeamRankTbl.setHorizontalHeaderItem(2, item)
+        self.TeamRankTbl.verticalHeader().setVisible(False)
         self.horizontalLayout_3.addWidget(self.TeamRankTbl)
         spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem2)
         self.MemRankTbl = QtGui.QTableWidget(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily(_fromUtf8("宋体"))
-        font.setPointSize(12)
-        self.MemRankTbl.setFont(font)
+        self.MemRankTbl.horizontalHeader().setResizeMode(QtGui.QHeaderView.Stretch)
+        self.MemRankTbl.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.MemRankTbl.setObjectName(_fromUtf8("MemRankTbl"))
         self.MemRankTbl.setColumnCount(3)
         self.MemRankTbl.setRowCount(0)
@@ -109,6 +111,7 @@ class Ui_MainWindow(object):
         self.MemRankTbl.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
         self.MemRankTbl.setHorizontalHeaderItem(2, item)
+        self.MemRankTbl.verticalHeader().setVisible(False)
         self.horizontalLayout_3.addWidget(self.MemRankTbl)
         self.horizontalLayout_4.addLayout(self.horizontalLayout_3)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -116,7 +119,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 969, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 892, 23))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menu = QtGui.QMenu(self.menubar)
         self.menu.setObjectName(_fromUtf8("menu"))

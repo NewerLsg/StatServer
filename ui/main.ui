@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>969</width>
+    <width>892</width>
     <height>534</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>892</width>
+    <height>534</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -18,12 +24,18 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
         <property name="sizeConstraint">
-         <enum>QLayout::SetMinimumSize</enum>
+         <enum>QLayout::SetMinAndMaxSize</enum>
         </property>
         <item>
          <widget class="QGroupBox" name="groupBox">
+          <property name="maximumSize">
+           <size>
+            <width>250</width>
+            <height>110</height>
+           </size>
+          </property>
           <property name="title">
            <string/>
           </property>
@@ -106,7 +118,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QTextBrowser" name="TipTextArea"/>
+         <widget class="QTextBrowser" name="TipTextArea">
+          <property name="maximumSize">
+           <size>
+            <width>250</width>
+            <height>16000</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -128,12 +147,18 @@
       </item>
       <item>
        <widget class="QTableWidget" name="TeamRankTbl">
-        <property name="font">
-         <font>
-          <family>宋体</family>
-          <pointsize>12</pointsize>
-         </font>
+        <property name="autoFillBackground">
+         <bool>false</bool>
         </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="autoScroll">
+         <bool>false</bool>
+        </property>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
         <column>
          <property name="text">
           <string>名次</string>
@@ -184,12 +209,12 @@
       </item>
       <item>
        <widget class="QTableWidget" name="MemRankTbl">
-        <property name="font">
-         <font>
-          <family>宋体</family>
-          <pointsize>12</pointsize>
-         </font>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
         </property>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
         <column>
          <property name="text">
           <string>名次</string>
@@ -217,8 +242,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>969</width>
-     <height>26</height>
+     <width>892</width>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
