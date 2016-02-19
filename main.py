@@ -73,7 +73,7 @@ class Main(QMainWindow):
 		pass
 		
 		teamRow = len(g_scoreRank.team)
-		self.ui.TeamRankTb.setRowCount(teamRow)
+		self.ui.TeamRankTbl.setRowCount(teamRow)
 
 		memRow = len(g_scoreRank.mem)
 		self.ui.MemRankTbl.setRowCount(memRow)
@@ -83,9 +83,9 @@ class Main(QMainWindow):
 		team = g_scoreRank.getTeamScoreList()
 		
 		for t in team:
-			self.ui.TeamRankTb.setItem(i,0,TableItem(str(i + 1)))
-			self.ui.TeamRankTb.setItem(i,1,TableItem(str(t.name)))
-			self.ui.TeamRankTb.setItem(i,2,TableItem(str(t.score)))	
+			self.ui.TeamRankTbl.setItem(i,0,TableItem(str(i + 1)))
+			self.ui.TeamRankTbl.setItem(i,1,TableItem(str(t.name)))
+			self.ui.TeamRankTbl.setItem(i,2,TableItem(str(t.score)))	
 			i += 1
 		
 		i = int(0)

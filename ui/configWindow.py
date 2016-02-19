@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'config.ui'
 #
-# Created: Sun Jan 24 20:49:11 2016
+# Created: Fri Feb 19 17:58:55 2016
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.setFixedSize(398, 251)
+        Dialog.resize(398, 251)
         self.groupBox_7 = QtGui.QGroupBox(Dialog)
         self.groupBox_7.setGeometry(QtCore.QRect(9, 9, 381, 231))
         self.groupBox_7.setTitle(_fromUtf8(""))
@@ -141,7 +141,7 @@ class Ui_Dialog(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(_translate("Dialog", "设置", None))
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog", None))
         self.label_2.setText(_translate("Dialog", "关卡时限", None))
         self.label_3.setText(_translate("Dialog", "目标分值", None))
         self.label_4.setText(_translate("Dialog", "人均目标", None))
