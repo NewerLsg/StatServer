@@ -54,26 +54,26 @@ class ScoreRank():
 
 
 	#私有方法 更新队伍总分，并返回
-	def __updateTeamScore(self, ID, name, MID, score):
+	def __increaseTeamScore(self, ID, name, MID):
 		
 		self.tlock.acquire()
 
 		for t in self.team:
 			if ID == t.ID:
-				t.updateScore(MID, score)
+				t.increaseScore(MID)
 				
 				self.team.sort(key=lambda  x: x.score, reverse = True)
 				self.tlock.release()
 				return	t.score
 
 		newTeamScoreEntity = teamScoreEntity(ID, name)
-		newTeamScoreEntity.updateScore(MID, score)
+		newTeamScoreEntity.increaseScore(MID)
 
 		self.team.append(newTeamScoreEntity)
 		self.team.sort(key=lambda  x: x.score, reverse = True)
 		self.tlock.release()
 
-		return score 
+		return 1 
 
 
 	def getTeamScore(self, ID):
@@ -90,21 +90,33 @@ class ScoreRank():
 
 		return ret
 
-	def updateScore(self, mem , score):
+	def updateTeamDoor(self, ID , doorID): #更新队伍所在关卡
+		ret = int(0)
+
+		self.tlock.acquire()
+
+		for t in self.team:
+			if t.ID == ID:
+				t.curdoorID = doorID  
+				break
+				
+		self.tlock.release()	
+
+	def increaseScore(self, mem):
 		#一个人只对自己的积分修改
 
 		self.mlock.acquire()
 		for m in self.mem:
 			if mem.ID == m.ID:
-				m.score += score
+				m.score += 1
 				self.mem.sort(key=lambda  x: x.score, reverse = True)
 				self.mlock.release()
-				return self.__updateTeamScore(mem.team.ID, mem.team.name, mem.ID, score)
+				return self.__increaseTeamScore(mem.team.ID, mem.team.name, mem.ID)
 				 	
-		self.mem.append(memScoreEntity(mem.ID, score, mem.team.name))
+		self.mem.append(memScoreEntity(mem.ID, mem.team.name))
 		self.mem.sort(key=lambda  x: x.score, reverse = True)
 		self.mlock.release()
-		return self.__updateTeamScore(mem.team.ID, mem.team.name, mem.ID,score)
+		return self.__increaseTeamScore(mem.team.ID, mem.team.name, mem.ID)
 
 class scoreEntity():
 	"""docstring for scoreEntity"""
@@ -120,28 +132,24 @@ class teamScoreEntity():
 		self.name 		= name
 		self.score 		= 0
 		self.memscore 	= []
+		self.curdoorID	= int(0)
 
-	def updateScore(self, MID, score):
+	def increaseScore(self, MID):
 
-		self.score += score #总分增加
+		self.score += 1 #总分增加
 
 		for m in self.memscore:
 			if m.ID == MID:
-				m.score += score
+				m.score += 1
 				return self.score
 
-		self.memscore.append(memScoreEntity(MID, score, self.name))
-
-		print("team name[%s] ID[%d] score[%d]" %(self.name, self.ID, self.score))
-
-		for m in self.memscore:
-			print("mem id[%s], mem score[%d] team name[%s]" %(m.ID, m.score, m.teamname))
+		self.memscore.append(memScoreEntity(MID, self.name))
 
 		return self.score	
 
 class memScoreEntity():
 	"""docstring for scoreEntity"""
-	def __init__(self, ID, score, teamname):
+	def __init__(self, ID, teamname):
 		self.ID 		= ID
-		self.score 		= score
+		self.score 		= int(1)
 		self.teamname 	= teamname

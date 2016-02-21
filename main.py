@@ -34,9 +34,11 @@ class Main(QMainWindow):
 		self.ui.StopBtn.clicked.connect(self.stopServer)
 		self.ui.action.triggered.connect(self.showConfig)
 		self.ui.StopBtn.setEnabled(False)
-		self.timer = QTimer()
+		self.timer4Rank = QTimer()
+		self.timer4Msg  = QTimer()
 
-		self.timer.timeout.connect(self.updateRank)
+		self.timer4Rank.timeout.connect(self.updateRank)
+		self.timer4Msg.timeout.connect(self.updateMsg)
 
 		for x in range(1, g_config['tatolDoors']):
 			newDoor = Door(x)
@@ -52,7 +54,8 @@ class Main(QMainWindow):
 
 		self.tcpServer.start()
 
-		self.timer.start(1000)
+		self.timer4Rank.start(1000)
+		self.timer4Msg.start(1000)
 
 		serverLog.debug("Start server.")
 		
@@ -61,7 +64,8 @@ class Main(QMainWindow):
 
 		self.tcpServer.quit()
 
-		self.timer.stop();
+		self.timer4Rank.stop();
+		self.timer4Msg.stop();
 
 		self.ui.StartBtn.setEnabled(True)
 		self.ui.PortTxt.setEnabled(True)
@@ -70,8 +74,6 @@ class Main(QMainWindow):
 		serverLog.debug("Stop server.")
 
 	def updateRank(self):
-		pass
-		
 		teamRow = len(g_scoreRank.team)
 		self.ui.TeamRankTbl.setRowCount(teamRow)
 
@@ -85,7 +87,8 @@ class Main(QMainWindow):
 		for t in team:
 			self.ui.TeamRankTbl.setItem(i,0,TableItem(str(i + 1)))
 			self.ui.TeamRankTbl.setItem(i,1,TableItem(str(t.name)))
-			self.ui.TeamRankTbl.setItem(i,2,TableItem(str(t.score)))	
+			self.ui.TeamRankTbl.setItem(i,2,TableItem(str(t.curdoorID )))
+			self.ui.TeamRankTbl.setItem(i,3,TableItem(str(t.score * g_config["scoreUint"])))	
 			i += 1
 		
 		i = int(0)
@@ -94,10 +97,19 @@ class Main(QMainWindow):
 		for m in mem:
 			self.ui.MemRankTbl.setItem(i,0,TableItem(str(i + 1)))
 			self.ui.MemRankTbl.setItem(i,1,TableItem(str(m.ID + "(" + m.teamname + ")")))
-			self.ui.MemRankTbl.setItem(i,2,TableItem(str(m.score)))	
+			self.ui.MemRankTbl.setItem(i,2,TableItem(str(m.score * g_config["scoreUint"])))	
 			i += 1
-		
+	
+	def updateMsg(self):
 
+		i = int(50)
+		if g_msque.empty() is not True:
+			while g_msque.empty() is not True and i > 0:
+				msg = g_msque.get()
+				i -= 1
+				self.ui.TipTextArea.append(msg)
+			g_msque.task_done()	
+		
 	def showConfig(self):
 		self.configWindow =  ConfigDialog()
 		self.configWindow.setWindowModality(Qt.ApplicationModal)

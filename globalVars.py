@@ -3,6 +3,7 @@
 #全局变量
 from threading import  RLock
 from scoreRank import *
+import Queue
 
 memRLock   	 = RLock()
 teamRLock 	 = RLock()
@@ -13,6 +14,8 @@ g_TeamArray = {}   #队伍
 g_teamNum = 1
 
 g_scoreRank = ScoreRank()
+
+g_msque = Queue.Queue(0)
 
 #可变配置项
 g_config = {'scoreUint': 10, 	#目标分值

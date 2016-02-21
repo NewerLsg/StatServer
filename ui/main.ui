@@ -125,6 +125,9 @@
             <height>16000</height>
            </size>
           </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
          </widget>
         </item>
        </layout>
@@ -156,6 +159,12 @@
         <property name="autoScroll">
          <bool>false</bool>
         </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
         <attribute name="verticalHeaderVisible">
          <bool>false</bool>
         </attribute>
@@ -176,6 +185,14 @@
         <column>
          <property name="text">
           <string>队名</string>
+         </property>
+         <property name="textAlignment">
+          <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>关卡</string>
          </property>
          <property name="textAlignment">
           <set>AlignHCenter|AlignVCenter|AlignCenter</set>
@@ -212,6 +229,12 @@
         <property name="horizontalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
         </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
         <attribute name="verticalHeaderVisible">
          <bool>false</bool>
         </attribute>
@@ -243,7 +266,7 @@
      <x>0</x>
      <y>0</y>
      <width>892</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

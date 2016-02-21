@@ -19,6 +19,7 @@ class Door(object):
 		self.teamIn	 = None			#内部队伍,为空表示没有
 		self.time	 = 1			#队伍的进入时间
 		self.targets = {}
+		self.limit 	 = int(0)
 
 class Target(object):
 	"""docstring for Target"""
@@ -41,8 +42,12 @@ class Target(object):
 		try:
 			del self.door.targets[self.ID]
 			serverLog.debug("target[%s] del from door[%d].", self.ID, int(self.door.ID))
+
 		except KeyError:
 			serverLog.debug("target[%s] not in door[%d]'s targets dict.", self.ID, str(self.door.ID))
+
+		except:
+			serverLog.debug("unexpect error")
 					
 
 #成员对象:主要是存储自己的ID以及对应的组
@@ -60,9 +65,10 @@ class Member(object):
 
 		self.team 		= team
 
-	def addScore(self, score):
-		serverLog.debug("ID:[%s] get [%d] score!",self.ID, score)
-		return globalVars.g_scoreRank.updateScore(self, score)
+	def increaseScore(self):
+		serverLog.debug("ID:[%s] get  score!",self.ID)
+		self.team.increaseDoorScore();
+		return globalVars.g_scoreRank.increaseScore(self)
 
 #队伍对象，主要存储队名以及人数
 class TeamObj(object):
@@ -72,11 +78,17 @@ class TeamObj(object):
 		super(TeamObj, self).__init__()
 		self.name 		= str(name)
 		self.ID 		= globalVars.g_teamNum 
-		self.reg    	= int(0) 	#1:有队员,0：无队员
-		self.num 		= int(0)
+		self.doorScore  = int(0) 	#当前关卡获得分数
+		self.num 		= int(0)	#总人数
 		self.numLeft	= int(0)	#剩余人数
 		self.curDoor	= None 		#当前所在关卡
 		globalVars.g_teamNum += 1
+
+	def resetDoorScore(self):
+		self.doorScore = 0
+
+	def increaseDoorScore(self):
+		self.doorScore += 1
 
 	def addMem(self, MID):
 		self.num += 1
@@ -88,5 +100,8 @@ class TeamObj(object):
 			#不存在则新建
 			newMem 	= Member(MID, self)
 			globalVars.g_memArray[MID] = newMem
+
+		except:
+			serverLog.debug("unexpect error.")
 
 		serverLog.debug("ID[%s] added to team name[%s], ID[%d].", MID, self.name, self.ID)		 
