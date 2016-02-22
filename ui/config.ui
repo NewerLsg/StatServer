@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>623</width>
-    <height>274</height>
+    <width>867</width>
+    <height>162</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -262,281 +262,99 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <spacer name="verticalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <widget class="QLabel" name="lable_4">
-           <property name="text">
-            <string>  1 - 5 关:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="Level1Edit"/>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="Level2Edit"/>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLineEdit" name="Level3Edit"/>
-         </item>
-         <item row="0" column="4">
-          <widget class="QLineEdit" name="Level4Edit"/>
-         </item>
-         <item row="0" column="5">
-          <widget class="QLineEdit" name="Level5Edit"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QGridLayout" name="gridLayout_6">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>  6 -10 关:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="Level6Edit"/>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="Level7Edit"/>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLineEdit" name="Level8Edit"/>
-         </item>
-         <item row="0" column="4">
-          <widget class="QLineEdit" name="Level9Edit"/>
-         </item>
-         <item row="0" column="5">
-          <widget class="QLineEdit" name="Level10Edit"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_6">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QGridLayout" name="gridLayout_7">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_6">
-           <property name="text">
-            <string>  11-15 关:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="Level11Edit"/>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="Level12Edit"/>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLineEdit" name="Level13Edit"/>
-         </item>
-         <item row="0" column="4">
-          <widget class="QLineEdit" name="Level14Edit"/>
-         </item>
-         <item row="0" column="5">
-          <widget class="QLineEdit" name="Level15Edit"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_10">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QGridLayout" name="gridLayout_8">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_7">
-           <property name="text">
-            <string>  16-20 关:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="Level16Edit"/>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="Level17Edit"/>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLineEdit" name="Level18Edit"/>
-         </item>
-         <item row="0" column="4">
-          <widget class="QLineEdit" name="Level19Edit"/>
-         </item>
-         <item row="0" column="5">
-          <widget class="QLineEdit" name="Level20Edit"/>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_11">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
      </item>
-     <item>
-      <layout class="QGridLayout" name="gridLayout_9">
-       <item row="0" column="0">
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="ComfirmBtn">
-         <property name="text">
-          <string>完成</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="3">
-        <widget class="QPushButton" name="CancelBtn">
-         <property name="text">
-          <string>取消</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="4">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="5">
-        <widget class="QPushButton" name="ResetBtn">
-         <property name="text">
-          <string>恢复默认</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="6">
-        <spacer name="horizontalSpacer_8">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+    </layout>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout_9">
+     <item row="0" column="0">
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="ComfirmBtn">
+       <property name="text">
+        <string>完成</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="CancelBtn">
+       <property name="text">
+        <string>取消</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="5">
+      <widget class="QPushButton" name="ResetBtn">
+       <property name="text">
+        <string>恢复默认</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="6">
+      <spacer name="horizontalSpacer_8">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>
   </layout>
-  <zorder>groupBox_4</zorder>
-  <zorder>groupBox_5</zorder>
-  <zorder>groupBox_6</zorder>
-  <zorder>lable_4</zorder>
-  <zorder>Level1Edit</zorder>
-  <zorder>Level2Edit</zorder>
-  <zorder>Level3Edit</zorder>
-  <zorder>Level4Edit</zorder>
-  <zorder>Level5Edit</zorder>
-  <zorder>layoutWidget</zorder>
-  <zorder>layoutWidget_2</zorder>
-  <zorder>layoutWidget_3</zorder>
   <zorder></zorder>
-  <zorder>horizontalSpacer_2</zorder>
-  <zorder>ComfirmBtn</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>horizontalSpacer_3</zorder>
-  <zorder>ResetBtn</zorder>
-  <zorder>horizontalSpacer_8</zorder>
-  <zorder>CancelBtn</zorder>
-  <zorder>verticalSpacer</zorder>
-  <zorder></zorder>
-  <zorder>groupBox_7</zorder>
  </widget>
  <resources/>
  <connections/>
