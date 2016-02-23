@@ -17,9 +17,11 @@ g_scoreRank = ScoreRank()
 
 g_msque = Queue.Queue(0)
 
+g_configPath = "conf/config"
+
 #可变配置项
 g_config = {'scoreUint': 10, 	#目标分值
 			'nameSize':3,		#名字大小
 			'targetUint':5,		#人均目标
-			'tatolDoors':18,	#总门设备(关卡总数)
+			'tatolLevels':18,	#总门设备(关卡总数)
 			'timeLimit':60}		#通关时限
