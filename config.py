@@ -55,46 +55,44 @@ class ConfigDialog(QDialog):
 		if num == self.num:
 			return None
 
-
-		if self.num%5 != 0:
-			oldrow = 1 + int(self.num/5)
-		else:
-			oldrow = int(self.num/5)
-
 		if num%5 != 0:
 			row = 1 + int(num/5)
 		else:
 			row = int(num/5)
 
-		print("old[%d], new[%d]" %(oldrow, row))
+		#删除原有格子
+ 		for i in xrange(2, self.ui.verticalLayout.count()):
 
-		if num > self.num: 
-			for i in xrange(oldrow, row ):#增加缺少的
-				print("i[%d]" %(i))
-				start = 0
-				if i != oldrow or self.num == 0: #此行不用增加
-					print("new line[%d]" %(i))
-					self.gridLayout[i] = QtGui.QGridLayout()
-					self.gridLayout[i].setObjectName(_fromUtf8("gridLayout_" + str(i)))
-					self.label[i] = QtGui.QLabel(self)
-					self.label[i].setObjectName(_fromUtf8("lable_" + str(i)))
-					self.label[i].setText(_fromUtf8(str(i * 5 + 1) + "-" + str(i  * 5 + 5) + "关"))
-					self.gridLayout[i].addWidget(self.label[i], 0, 0, 1, 1)
-				else:
-					start = 5 - self.num%5
+ 			childLayout = self.ui.verticalLayout.takeAt(2)
+
+ 			print("childLayout[%d]" %(childLayout.count()))
+
+ 			for x in xrange(0, childLayout.count()):
+ 				print("take at.")
+ 				item = childLayout.takeAt(0)
+ 				item.widget().deleteLater()
+
+			childLayout.layout().deleteLater()
 
 
-				for j in xrange(start,5):
-					self.LevelEdit[i * 5 + j] = QtGui.QLineEdit(self)
-					self.LevelEdit[i * 5 + j].setText("123")
-					self.LevelEdit[i * 5 + j].setObjectName(_fromUtf8("Level_" + str(j) +"_Edit"))
-					self.gridLayout[i].addWidget(self.LevelEdit[i * 5 + j], 0, j + 1, 1, 1)
+		#增加新的格子
+		for i in xrange(0, row):
+			self.gridLayout[i] = QtGui.QGridLayout()
+			self.gridLayout[i].setObjectName(_fromUtf8("gridLayout_" + str(i)))
+			self.label[i] = QtGui.QLabel(self)
+			self.label[i].setObjectName(_fromUtf8("lable_" + str(i)))
+			self.label[i].setText(_fromUtf8(str(i * 5 + 1) + "-" + str(i  * 5 + 5) + "关"))
+			self.gridLayout[i].addWidget(self.label[i], 0, 0, 1, 1)
 
-				if i != oldrow or self.num == 0:
-					self.ui.verticalLayout.addLayout(self.gridLayout[i])
+			for j in xrange(0,5):
+				self.LevelEdit[i * 5 + j] = QtGui.QLineEdit(self)
+				self.LevelEdit[i * 5 + j].setText("123")
+				self.LevelEdit[i * 5 + j].setObjectName(_fromUtf8("Level_" + str(j) +"_Edit"))
+				self.gridLayout[i].addWidget(self.LevelEdit[i * 5 + j], 0, j + 1, 1, 1)
+
+			self.ui.verticalLayout.addLayout(self.gridLayout[i])
 
 		self.num = num
-
 
 	def reset(self):
 		self.ui.TimeLimitLine.setText('60')
