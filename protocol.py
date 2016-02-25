@@ -110,7 +110,7 @@ def parseMenMsg(msgContent):
 
 				#其他门--前面门内有队伍且达到积分要求
 				elif  globalVars.g_doorArray[did - 2].teamIn is not None \
-						and globalVars.g_doorArray[did - 2].teamIn.doorScore > globalVars.g_doorArray[did - 2 ].limit:
+						and globalVars.g_doorArray[did - 2].teamIn.doorScore >= globalVars.g_doorArray[did - 1 ].limit:
 
 					serverLog.debug("score matched")		
 					return  SERVER_TO_MEN + AUTH_ACCESS + MSG_END
@@ -145,6 +145,10 @@ def parseMenMsg(msgContent):
 		#except:
 			#serverLog.debug("unexcept error")
 			#return None
+
+		#排除队伍打开的是第一个门，将前一个门中的队伍置为None
+		if m.team.curDoor is not None:			
+			m.team.curDoor.teamIn = None 
 
 		curDoor.teamIn 	= m.team 		#当前门的队伍
 		m.team.curDoor 	= curDoor		#当前队伍所在的门

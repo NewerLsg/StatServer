@@ -55,51 +55,82 @@ class Form(QDialog):
         self.socket.connectToHost("localhost", PORT)
 
     def issueRequest(self):
-
-        #门请求权限
-        self.socket.write("DS0001\n") #1号门请求权限
-        self.socket.write("DS0002\n") #2号门请求权限
-        self.socket.write("DS0003\n") #3号门请求权限
-        self.socket.write("DS0004\n") #4号门请求权限
-        self.socket.write("DS0005\n") #5号门请求权限
-        self.socket.write("DS0006\n") #6号门请求权限
-
         self.socket.write("TS0102001002hongdui\n")
         self.socket.write("TS0103003004005landui\n")
         self.socket.write("TS0103006007008zidui\n")
 
-        #被击中
+        #门请求权限
+        self.socket.write("DS0002\n") #2号门请求权限
+
+        """
+        第一个队伍进入1号门
+        """
+        self.socket.write("DS0001\n") 
+
+        #hongdui队1号开1号门
+        self.socket.write("DS0100101\n")
+
+        self.socket.write("DS0001\n") 
+        self.socket.write("DS0002\n")
         self.socket.write("MS01001\n")
         self.socket.write("MS01002\n")
+
+        #2请求-允许
+        self.socket.write("DS0002\n") #1号门请求权限
+
+        #hongdui队2号打开2号门
+        self.socket.write("DS0100202\n")
+
         self.socket.write("MS01002\n")
+        self.socket.write("MS01002\n")
+        self.socket.write("MS01002\n")
+        self.socket.write("MS01002\n")
+        
+
+        #landui开1号门
+        self.socket.write("DS0001\n") 
+
+        self.socket.write("DS0100301\n")
+
         self.socket.write("MS01003\n")
         self.socket.write("MS01004\n")
         self.socket.write("MS01005\n")
-        self.socket.write("MS01006\n")
-        self.socket.write("MS01007\n")
-        self.socket.write("MS01008\n")
-        self.socket.write("MS01008\n")
 
-        #HD队1号开1号门,应该是允许
-        self.socket.write("DS0100101\n")
-        self.socket.write("DS0100301\n")
-        self.socket.write("DS0100601\n")
+        #2号请求-不允许
+        self.socket.write("DS0002\n")
 
-         #HD队2号开2号门,应该是允许
-        self.socket.write("DS0100202\n")
 
-        #LD队3号开1号门,应该是允许
-        self.socket.write("DS0100301\n")
+
+        #hongdui队2号打开3号门
+        #3号-允许
+        self.socket.write("DS0003\n") 
+
+        self.socket.write("DS0100203\n")
+
+        self.socket.write("MS01002\n")
+        self.socket.write("MS01002\n")
+        self.socket.write("MS01002\n")
+        self.socket.write("MS01002\n")
+
+        #3号不允许
+        self.socket.write("DS0003\n")
+
+        #2号请求-允许
+        self.socket.write("DS0002\n")
+
+        #2号门-开门
         self.socket.write("DS0100302\n")
 
-        #HD  3
-        self.socket.write("DS0100103\n")
+        self.socket.write("MS01003\n")
+        self.socket.write("MS01004\n")
+        self.socket.write("MS01005\n")
 
-        #LD 2
-        self.socket.write("DS0100302\n")
+        #1号门-允许
+        self.socket.write("DS0001\n") #3号门请求权限
 
-        #
+        #zidui开1号门
         self.socket.write("DS0100601\n")
+
 
         self.lineedit.setText("")
 

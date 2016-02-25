@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import os
 import time
 from threading import Timer
 
@@ -8,7 +9,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyQt4.QtNetwork import *
 
-from globalVars import *
+import globalVars 
 from communicationObjs import *
 from config import *
 from tcpserver import *
@@ -33,6 +34,7 @@ class Main(QMainWindow):
 		self.ui.StartBtn.clicked.connect(self.startServer)
 		self.ui.StopBtn.clicked.connect(self.stopServer)
 		self.ui.action.triggered.connect(self.showConfig)
+		self.status = False
 		self.ui.StopBtn.setEnabled(False)
 		self.timer4Rank = QTimer()
 		self.timer4Msg  = QTimer()
@@ -40,12 +42,11 @@ class Main(QMainWindow):
 		self.timer4Rank.timeout.connect(self.updateRank)
 		self.timer4Msg.timeout.connect(self.updateMsg)
 
-		for x in range(1, g_config['tatolDoors']):
-			newDoor = Door(x)
-			g_doorArray.append(newDoor)
+		self.config()
 
 	def startServer(self):
 		port = int(self.ui.PortTxt.text())
+
 		self.ui.StartBtn.setEnabled(False)
 		self.ui.PortTxt.setEnabled(False)
 		self.ui.StopBtn.setEnabled(True)
@@ -56,6 +57,8 @@ class Main(QMainWindow):
 
 		self.timer4Rank.start(1000)
 		self.timer4Msg.start(1000)
+
+		self.status = True
 
 		serverLog.debug("Start server.")
 		
@@ -71,50 +74,54 @@ class Main(QMainWindow):
 		self.ui.PortTxt.setEnabled(True)
 		self.ui.StopBtn.setEnabled(False)
 
+
+		self.status = False
 		serverLog.debug("Stop server.")
 
 	def updateRank(self):
-		teamRow = len(g_scoreRank.team)
+		teamRow = len(globalVars.g_scoreRank.team)
 		self.ui.TeamRankTbl.setRowCount(teamRow)
 
-		memRow = len(g_scoreRank.mem)
+		memRow = len(globalVars.g_scoreRank.mem)
 		self.ui.MemRankTbl.setRowCount(memRow)
 
 		#为了不影响当前的报文解析,直接复制,可以一部分的避免加锁的情况
 		i = int(0)
-		team = g_scoreRank.getTeamScoreList()
+		team = globalVars.g_scoreRank.getTeamScoreList()
 		
 		for t in team:
 			self.ui.TeamRankTbl.setItem(i,0,TableItem(str(i + 1)))
 			self.ui.TeamRankTbl.setItem(i,1,TableItem(str(t.name)))
 			self.ui.TeamRankTbl.setItem(i,2,TableItem(str(t.curdoorID )))
-			self.ui.TeamRankTbl.setItem(i,3,TableItem(str(t.score * g_config["scoreUint"])))	
+			self.ui.TeamRankTbl.setItem(i,3,TableItem(str(t.score * globalVars.g_config["scoreUint"])))	
 			i += 1
 		
 		i = int(0)
-		mem = g_scoreRank.getMemScoreList()
+		mem = globalVars.g_scoreRank.getMemScoreList()
 
 		for m in mem:
 			self.ui.MemRankTbl.setItem(i,0,TableItem(str(i + 1)))
 			self.ui.MemRankTbl.setItem(i,1,TableItem(str(m.ID + "(" + m.teamname + ")")))
-			self.ui.MemRankTbl.setItem(i,2,TableItem(str(m.score * g_config["scoreUint"])))	
+			self.ui.MemRankTbl.setItem(i,2,TableItem(str(m.score * globalVars.g_config["scoreUint"])))	
 			i += 1
 	
 	def updateMsg(self):
 
 		i = int(50)
-		if g_msque.empty() is not True:
-			while g_msque.empty() is not True and i > 0:
-				msg = g_msque.get()
+		if globalVars.g_msque.empty() is not True:
+			while globalVars.g_msque.empty() is not True and i > 0:
+				msg = globalVars.g_msque.get()
 				i -= 1
 				self.ui.TipTextArea.append(msg)
-			g_msque.task_done()	
+			globalVars.g_msque.task_done()	
 		
+
 	def showConfig(self):
 		self.configWindow =  ConfigDialog()
+		self.connect(self.configWindow, SIGNAL("configChanged()"), self.config)
 		self.configWindow.setWindowModality(Qt.ApplicationModal)
 		self.configWindow.show()
-
+		
 	def closeEvent(self, event):
 		reply = QtGui.QMessageBox.question(self, _fromUtf8('退出'),
 			_fromUtf8("确认退出?"), QtGui.QMessageBox.Yes |
@@ -123,6 +130,33 @@ class Main(QMainWindow):
 			event.accept()
 		else:
 			event.ignore()
+
+	def config(self):
+
+		if os.path.exists(globalVars.g_configPath) is False:
+			return 
+
+		with open(globalVars.g_configPath,"r") as f:
+			jsonStr = json.load(f)
+
+		globalVars.g_config['tatolLevels'] = int(jsonStr['totallevels'])
+		globalVars.g_config['timeLimit']  = int(jsonStr['timelimit'])	
+		globalVars.g_config['scoreUint']  = int(jsonStr['scoreunit'])
+
+		levelArray = jsonStr['levelArray']
+
+		globalVars.g_doorArray = []
+
+		for x in range(0, globalVars.g_config['tatolLevels']):
+			newDoor = Door(x + 1)
+			newDoor.limit = levelArray[x]
+			globalVars.g_doorArray.append(newDoor)
+
+
+		if self.status == True:
+			self.stopServer()
+			self.startServer()
+		
 
 app = QApplication(sys.argv)
 main = Main()
