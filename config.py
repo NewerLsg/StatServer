@@ -3,6 +3,7 @@
 import sys
 import json
 import os
+import string
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
@@ -62,6 +63,7 @@ class ConfigDialog(QDialog):
 		else:
 			self.row = int(self.num/5)
 
+
 		#删除原有格子
  		for i in xrange(1, self.ui.verticalLayout.count()):
  			childLayout = self.ui.verticalLayout.takeAt(1)
@@ -70,14 +72,26 @@ class ConfigDialog(QDialog):
  				item.widget().deleteLater()
 			childLayout.layout().deleteLater()
 
+
+		sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Fixed)
+		sizePolicy.setHorizontalStretch(0)
+		sizePolicy.setVerticalStretch(0)		
+
 		#增加新的格子
 		for i in xrange(0, self.row):
 			self.gridLayout[i] = QtGui.QGridLayout()
 			self.gridLayout[i].setObjectName(_fromUtf8("gridLayout_" + str(i)))
+		
+
 			self.label[i] = QtGui.QLabel(self)
 			self.label[i].setObjectName(_fromUtf8("lable_" + str(i)))
 			self.label[i].setStyleSheet(_fromUtf8("font: 12pt \"宋体\";"))
-			self.label[i].setText(_fromUtf8(str(i * 5 + 1) + "-" + str(i  * 5 + 5) + "关"))
+
+			self.label[i].setText(_fromUtf8(string.zfill(str(i * 5 + 1),2) + "-" + string.zfill(str(i * 5 + 5),2) + "关"))
+
+			self.label[i].setSizePolicy(sizePolicy)
+			self.label[i].setMaximumHeight(50)
+
 			self.gridLayout[i].addWidget(self.label[i], 0, 0, 1, 1)
 
 			for j in xrange(0,5):
@@ -85,9 +99,20 @@ class ConfigDialog(QDialog):
 				self.LevelEdit[i * 5 + j].setText("0")
 				self.LevelEdit[i * 5 + j].setObjectName(_fromUtf8("Level_" + str(j) +"_Edit"))
 				self.LevelEdit[i * 5 + j].setStyleSheet(_fromUtf8("font: 12pt \"宋体\";"))
+				self.LevelEdit[i * 5 + j].setSizePolicy(sizePolicy)
+				self.LevelEdit[i * 5 + j].setMaximumHeight(50)
+
+				if i * 5 + j >= self.num:
+					self.LevelEdit[i * 5 + j].setText("")
+					self.LevelEdit[i * 5 + j].setEnabled(False)
+
 				self.gridLayout[i].addWidget(self.LevelEdit[i * 5 + j], 0, j + 1, 1, 1,QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
 
 			self.ui.verticalLayout.addLayout(self.gridLayout[i])
+
+			self.adjustSize()
+
+			self.resize(self.maximumWidth(), self.maximumHeight() + 50 * self.row)
 
 	def reset(self):
 		if os.path.exists(g_configPath) is False:
@@ -121,14 +146,22 @@ class ConfigDialog(QDialog):
 			self.label[i] = QtGui.QLabel(self)
 			self.label[i].setObjectName(_fromUtf8("lable_" + str(i)))
 			self.label[i].setStyleSheet(_fromUtf8("font: 12pt \"宋体\";"))
-			self.label[i].setText(_fromUtf8(str(i * 5 + 1) + "-" + str(i  * 5 + 5) + "关"))
+			self.label[i].setText(_fromUtf8(string.zfill(str(i * 5 + 1),2) + "-" + string.zfill(str(i * 5 + 5),2) + "关"))
+
 			self.gridLayout[i].addWidget(self.label[i], 0, 0, 1, 1)
 
 			for j in xrange(0,5):
 				self.LevelEdit[i * 5 + j] = QtGui.QLineEdit(self)
-				self.LevelEdit[i * 5 + j].setText(str(levelArray[i * 5 + j]))
+
+				if i * 5 + j >= self.num:
+					self.LevelEdit[i * 5 + j].setText("")
+					self.LevelEdit[i * 5 + j].setEnabled(False)
+				else:
+					self.LevelEdit[i * 5 + j].setText(str(levelArray[i * 5 + j]))
+				
 				self.LevelEdit[i * 5 + j].setObjectName(_fromUtf8("Level_" + str(j) +"_Edit"))
 				self.LevelEdit[i * 5 + j].setStyleSheet(_fromUtf8("font: 12pt \"宋体\";"))
+
 				self.gridLayout[i].addWidget(self.LevelEdit[i * 5 + j], 0, j + 1, 1, 1,QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
 
 			self.ui.verticalLayout.addLayout(self.gridLayout[i])
@@ -143,9 +176,8 @@ class ConfigDialog(QDialog):
 		jsonStr = {}
 		levelArray = []
 
-		for i in xrange(0, self.row):
-			for j in xrange(0,5):
-				levelArray.append(int(self.LevelEdit[i * 5 + j].text()))
+		for i in xrange(0, self.num):
+			levelArray.append(int(self.LevelEdit[i].text()))
 
 		jsonStr["timelimit"] = int(self.ui.TimeLimitLine.text())
 		jsonStr["scoreunit"] = int(self.ui.ScoreUnitLine.text())
