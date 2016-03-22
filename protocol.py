@@ -272,14 +272,14 @@ def parseDestMsg(msgContent, sock):
 			if tid in curDoor.targets.keys(): 	#门内目标物ID已存在
 				target = curDoor.targets[tid];
 				target.reset(curDoor, sock)	 	#重置套接字
-				serverLog.debug("target[%s] in team[%d] already exist.", tid, did)
+				serverLog.debug("target[%s] in door[%d] already exist.", tid, did)
 
 			else:								#目标物ID不存在需要初始化
 				target =  Target(tid, globalVars.g_doorArray[did - 1], sock)
 				curDoor.targets[tid] = target
 
 				print("target{%s} in  door[%d]"% (str(curDoor.targets), did))
-				serverLog.debug("target[%s] in team[%d] init succ.", tid, did)	
+				serverLog.debug("target[%s] in door[%d] init succ.", tid, did)	
 
 		except IndexError:			#门不存在
 			serverLog.debug("invalid door ID [%d].", did)

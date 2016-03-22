@@ -171,4 +171,3 @@ class Ui_MainWindow(object):
         self.menu_2.setTitle(_translate("MainWindow", "帮助", None))
         self.action.setText(_translate("MainWindow", "属性", None))
         self.action_2.setText(_translate("MainWindow", "关于软件", None))
-

@@ -31,9 +31,13 @@ class ScoreRank():
 			self.clearTeamSocre(member.team.ID, member.team.name)
 
 		self.mlock.acquire()
+		tempMem = None
 		for m in self.mem:
 			if m.ID == member.ID:
-				m.score =  0
+				tempMem = m
+
+		if tempMem is not None:
+			self.mem.remove(tempMem)
 
 		self.mlock.release()
 

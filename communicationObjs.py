@@ -36,6 +36,7 @@ class Target(object):
 
 	def reset(self,door,sock):
 		self.sock =  sock
+		self.door = door
 		self.sock.src = self
 
 	def closeByAccient(self):
@@ -46,8 +47,8 @@ class Target(object):
 		except KeyError:
 			serverLog.debug("target[%s] not in door[%d]'s targets dict.", self.ID, str(self.door.ID))
 
-		except:
-			serverLog.debug("unexpect error")
+		#except:
+			#serverLog.debug("unexpect error")
 					
 
 #成员对象:主要是存储自己的ID以及对应的组
@@ -61,8 +62,12 @@ class Member(object):
 	
 	def reset(self, team):
 		self.team.numLeft -= 1	#原队伍人数减1
-		globalVars.g_scoreRank.clearMemScore(self)
 
+		if self.team.numLeft == 0: #队伍没有人
+			self.team.curDoor = None
+			globalVars.g_TeamArray.pop(self.team.ID)
+
+		globalVars.g_scoreRank.clearMemScore(self)
 		self.team 		= team
 
 	def increaseScore(self):
@@ -95,13 +100,13 @@ class TeamObj(object):
 		self.numLeft += 1
 		try:
 			mem =  globalVars.g_memArray[MID]
-			mem.reset(self)
+			mem.reset(self) #清理积分
+			globalVars.g_memArray[MID] = Member(MID, self)
 		except KeyError:
 			#不存在则新建
-			newMem 	= Member(MID, self)
-			globalVars.g_memArray[MID] = newMem
+			globalVars.g_memArray[MID] = Member(MID, self)
 
-		except:
-			serverLog.debug("unexpect error.")
+		#except:
+			#serverLog.debug("unexpect error.")
 
 		serverLog.debug("ID[%s] added to team name[%s], ID[%d].", MID, self.name, self.ID)		 
